@@ -1,2 +1,19 @@
-<h1>User::Homes#top</h1>
-<p>Find me in app/views/user/homes/top.html.erb</p>
+<div class="container">
+  
+  <div>
+    <% @genres.each do |genre| %>
+      <%= link_to genre.name, user_genres_index_path %>
+    <% end %>
+  </div>
+  
+  <div>
+    
+  </div>
+  
+  <div>
+    <% @posts.each do |post| %>
+      <%= link_to post.main_code, user_posts_show_path %>
+      <%= post.title %>
+    <% end %>
+  </div>
+</div>

@@ -1,2 +1,23 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container">
+  <div>
+  
+  </div>
+  <div>
+      <% @users.each do |user| %>
+      <%= link_to user.name, admin_users_show_path %>
+      <% end %>
+  </div>
+  
+  <div>
+    <% @posts.each do |post| %>
+      <%= link_to post.main_code, user_posts_show_path %>
+      <%= post.title %>
+    <% end %>
+  </div>
+  
+  <div>
+    <% @genres.each do |genre| %>
+      <%= link_to genre.name, admin_genres_index_path %>
+    <% end %>
+  </div>
+</div>
