@@ -1,15 +1,18 @@
 <div class="container">
-  
+
   <div>
     <% @genres.each do |genre| %>
       <%= link_to genre.name, user_genres_index_path %>
     <% end %>
   </div>
-  
+
   <div>
-    
+    <% @favorite_posts.each do |post| %>
+      <%= link_to post.main_code, user_posts_show_path %>
+      <%= post.title %>
+    <% end %>
   </div>
-  
+
   <div>
     <% @posts.each do |post| %>
       <%= link_to post.main_code, user_posts_show_path %>

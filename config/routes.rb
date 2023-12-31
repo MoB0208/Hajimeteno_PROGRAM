@@ -27,18 +27,18 @@ Rails.application.routes.draw do
     get '/admin/genres/:id', to: 'genres#show', as: 'genres_show'
   end
   namespace :admin do
-    get '/admin/posts', to: 'posts#index'
-    get '/admin/posts/:id', to: 'posts#show'
+    get '/admin/posts', to: 'posts#index', as: 'posts_index'
+    get '/admin/posts/:id', to: 'posts#show', as: 'posts_show'
     delete 'posts/destroy'
   end
   namespace :admin do
-    get '/admin/comments', to: 'comments#index'
-    get '/admin/comments/:id', to: 'comments#show'
+    get '/admin/comments', to: 'comments#index', as: 'comments_index'
+    get '/admin/comments/:id', to: 'comments#show', as: 'comments_show'
     delete 'comments/destroy'
   end
   namespace :admin do
-    get '/admin/searches', to: 'searches#search'
-    get '/admin/searches', to: 'searches#index'
+    get '/admin/searches', to: 'searches#search', as: 'searches_search'
+    get '/admin/searches', to: 'searches#index', as: 'searches_index'
   end
 
 
@@ -56,82 +56,25 @@ Rails.application.routes.draw do
     get '/genres/:id', to: 'genres#show', as: 'genres_show'
   end
   namespace :user do
-    get '/posts/new', to: 'posts#new'
-    get '/posts/:id/edit', to: 'posts#edit'
+    get '/posts/new', to: 'posts#new', as: 'posts_new'
+    get '/posts/:id/edit', to: 'posts#edit', as: 'posts_edit'
     patch 'posts/update'
-    get '/posts', to: 'posts#index'
-    get '/posts/:id', to: 'posts#show'
+    get '/posts', to: 'posts#index', as: 'posts_index'
+    get '/posts/:id', to: 'posts#show', as: 'posts_show'
   end
   namespace :user do
     post 'comments/create'
-    get '/comments/:id', to: 'comments#edit'
+    get '/comments/:id', to: 'comments#edit', as: 'comments_edit'
     patch 'comments/update'
     delete 'comments/destroy'
   end
   namespace :user do
-    get '/searches', to: 'searches#search'
-    get '/searches', to: 'searches#index'
+    get '/searches', to: 'searches#search', as: 'searches_search'
+    get '/searches', to: 'searches#index', as: 'searches_index'
   end
   namespace :user do
     post 'favorites/create'
     delete 'favorites/destroy'
-    get '/favorites', to: 'favorites#index'
+    get '/favorites', to: 'favorites#index', as: 'favorites_index'
   end
-
-
-
-
-  # namespace :admin do
-  #   get 'searches/search'
-  #   get 'searches/index'
-  # end
-  # namespace :user do
-  #   get 'searches/search'
-  #   get 'searches/index'
-  # end
-  # namespace :user do
-  #   get 'comments/create'
-  #   get 'comments/edit'
-  #   get 'comments/update'
-  #   get 'comments/destroy'
-  # end
-  # namespace :user do
-  #   get 'favorites/create'
-  #   get 'favorites/destroy'
-  #   get 'favorites/index'
-  # end
-  # namespace :user do
-  #   get 'posts/new'
-  #   get 'posts/edit'
-  #   get 'posts/update'
-  #   get 'posts/index'
-  #   get 'posts/show'
-  # end
-  # namespace :user do
-  #   get 'users/show'
-  #   get 'users/edit'
-  #   get 'users/update'
-  # end
-  # namespace :user do
-  #   get 'homes/top'
-  # end
-  # namespace :admin do
-  #   get 'posts/index'
-  #   get 'posts/show'
-  #   get 'posts/destroy'
-  # end
-  # namespace :admin do
-  #   get 'comments/index'
-  #   get 'comments/show'
-  #   get 'comments/destroy'
-  # end
-  # namespace :admin do
-  #   get 'users/index'
-  #   get 'users/show'
-  #   get 'users/edit'
-  #   get 'users/updete'
-  # end
-  # namespace :admin do
-  #   get 'homes/top'
-  # end
 end

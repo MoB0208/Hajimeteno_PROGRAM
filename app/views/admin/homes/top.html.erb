@@ -1,20 +1,23 @@
 <div class="container">
   <div>
-  
+    <% @comments.each do |comment| %>
+      <%= link_to comment.comment_body, admin_comments_show_path %>
+      <%= link_to "削除", admin_comments_destroy_path %>
+    <% end %>
   </div>
   <div>
-      <% @users.each do |user| %>
+    <% @users.each do |user| %>
       <%= link_to user.name, admin_users_show_path %>
-      <% end %>
+    <% end %>
   </div>
-  
+
   <div>
     <% @posts.each do |post| %>
-      <%= link_to post.main_code, user_posts_show_path %>
+      <%= link_to post.main_code, admin_posts_show_path %>
       <%= post.title %>
     <% end %>
   </div>
-  
+
   <div>
     <% @genres.each do |genre| %>
       <%= link_to genre.name, admin_genres_index_path %>
