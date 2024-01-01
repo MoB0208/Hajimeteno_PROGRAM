@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     delete 'comments/destroy'
   end
   namespace :admin do
-    get '/admin/searches', to: 'searches#search', as: 'searches_search'
+    get "search" => 'searches#search'
     get '/admin/searches', to: 'searches#index', as: 'searches_index'
   end
 
@@ -69,7 +69,7 @@ Rails.application.routes.draw do
     delete 'comments/destroy'
   end
   namespace :user do
-    get '/searches', to: 'searches#search', as: 'searches_search'
+    get "search" => 'searches#search'
     get '/searches', to: 'searches#index', as: 'searches_index'
   end
   namespace :user do

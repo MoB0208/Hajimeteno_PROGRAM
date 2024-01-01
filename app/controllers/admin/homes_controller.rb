@@ -1,4 +1,6 @@
 class Admin::HomesController < ApplicationController
+  before_action :authenticate_user!
+
   def top
     @comments = Comment.page(params[:page]).per(20).order(created_at: :desc)
     # 20件ごとに新着順で表記
