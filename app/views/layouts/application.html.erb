@@ -11,13 +11,26 @@
   </head>
 
   <header>
-    <% if admin_signed_in? %>
-    <% elsif user_signed_in? %>
-    <% else %>
-    <% end %>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark justify-content-between" style="background-color: #8a2be2;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">はじめてのプログラム</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon" style="color: blue;"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarNav">
+          <ul class="navbar-nav">
+            <% if admin_signed_in? %>
+            <% elsif user_signed_in? %>
+            <% else %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
   </header>
 
-  <body>
+  <body style="background-color: #ccccdd;">
     <%= yield %>
   </body>
 </html>
