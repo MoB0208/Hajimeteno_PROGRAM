@@ -1,4 +1,6 @@
 class User::UsersController < ApplicationController
+  before_action :authenticate_user!
+  
   def show
   end
 
@@ -6,5 +8,11 @@ class User::UsersController < ApplicationController
   end
 
   def update
+  end
+  
+  private
+
+  def user_params
+    params.require(:user).permit(:account_name,:birthdate,:email)
   end
 end
