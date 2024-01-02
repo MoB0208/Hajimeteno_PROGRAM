@@ -10,6 +10,14 @@
           </colgroup>
           <tr>
             <td class="table-warning">
+              <%= f.label :image, "アイコン" %>
+            </td>
+            <td>
+              <%= f.file_field :image, accept: "image/*" %>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-warning">
               <%= f.label :account_name, "アカウント名" %>
             </td>
             <td>
