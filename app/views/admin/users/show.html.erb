@@ -10,7 +10,13 @@
         </colgroup>
         <tr>
           <td class="table-warning"></td>
-          <td><%= image_tag user.image, size: "200x200" %></td>
+          <td>
+            <% if user.image.attached? %>
+              <%= image_tag user.image, size: "200x200" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "200x200" %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <td class="table-warning">アカウント名</td>
