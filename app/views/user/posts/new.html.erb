@@ -1,2 +1,35 @@
-<h1>User::Posts#new</h1>
-<p>Find me in app/views/user/posts/new.html.erb</p>
+<%= form_with model:post,local:true do |f| %>
+  <%= form_with model:genre,local:true do |f| %>
+    <%= form_with model:post_code,local:true do |f| %>
+
+      <div class="form-group">
+        <%= f.label :title, "タイトル" %>
+        <%= f.text_field :title, class: 'form-control title', placeholder:"タイトルを記入してください。" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :main_code, "メインコード" %>
+        <%= f.text_area :main_code, class: 'form-control main_code', placeholder:"今回の記事のメインとなるコードを記入してください。" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :genre_name, "言語選択" %>
+        <%= f.text_field :genre_name, class: 'form-control genre_name', placeholder:"言語を選択してください。" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :version, "バージョン" %>
+        <%= f.text_area :version, class: 'form-control version', placeholder:"バージョンを記入してください。" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :code, "コード" %>
+        <%= f.text_field :code, class: 'form-control code', placeholder:"実際の使用例を記入してください。" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :body, "本文" %>
+        <%= f.text_area :body, class: 'form-control body', placeholder:"詳しい使い方や説明を記入してください。" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit class: 'btn btn-success' %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

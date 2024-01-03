@@ -57,6 +57,7 @@ Rails.application.routes.draw do
   end
   namespace :user do
     get '/posts/new', to: 'posts#new', as: 'posts_new'
+    post '/posts/create' => 'posts#create'
     get '/posts/:id/edit', to: 'posts#edit', as: 'posts_edit'
     patch 'posts/update'
     get '/posts', to: 'posts#index', as: 'posts_index'
