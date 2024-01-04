@@ -1,8 +1,8 @@
 class Genre < ApplicationRecord
   belongs_to :post
-  
-  enum payment_method: { 
-    javascript: 0, 
+
+  enum payment_method: {
+    javascript: 0,
     java: 1,
     php: 2,
     c: 3,
@@ -35,6 +35,7 @@ class Genre < ApplicationRecord
     flask: 30,
     bootstrap: 31,
     foundation: 32,
-    uikit: 33
+    uikit: 33,
+    react: 34
   }
 end
