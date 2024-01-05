@@ -14,7 +14,8 @@ Rails.application.routes.draw do
 
    # 管理者用
   namespace :admin do
-    get '/admin', to: 'homes#top'
+    #get '/admin', to: 'homes#top'
+    root to: 'homes#top'
   end
   namespace :admin do
     get '/admin/users', to: 'users#index', as: 'users_index'
@@ -43,9 +44,9 @@ Rails.application.routes.draw do
 
 
   # 会員用
-  namespace :user do
-    root to: 'homes#top'
-  end
+  #namespace :user do
+    root to: 'user/homes#top'
+  #end
   namespace :user do
     get '/home', to: 'users#show'
     get '/infomation/edit', to: 'users#edit'
