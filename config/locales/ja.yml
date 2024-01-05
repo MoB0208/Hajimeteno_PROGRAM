@@ -1,7 +1,7 @@
 ja:
 　enums:
-    order:
-      payment_method:
+    genre:
+      genre_name:
         javascript: "JavaScript"
         java: "Java"
         php: "PHP"

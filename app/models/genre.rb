@@ -1,7 +1,7 @@
 class Genre < ApplicationRecord
   belongs_to :post
 
-  enum payment_method: {
+  enum genre_name: {
     javascript: 0,
     java: 1,
     php: 2,
