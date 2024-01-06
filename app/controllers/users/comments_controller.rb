@@ -16,6 +16,8 @@ class Users::CommentsController < ApplicationController
   end
 
   def destroy
+    Comment.find(params[:id]).destroy
+    redirect_to posts_show_path(params[:post_id])
   end
 
   private
