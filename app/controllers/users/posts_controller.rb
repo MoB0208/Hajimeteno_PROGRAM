@@ -36,6 +36,7 @@ class Users::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @posts = @post.main_code
+    @comment = Comment.new
   end
 
   private
