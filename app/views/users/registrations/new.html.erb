@@ -4,7 +4,7 @@
     <div class="py-5 px-5">
       <%= form_for(resource, as: resource_name, url: new_user_registration_path(resource_name)) do |f| %>
       <%#= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "user/shared/error_messages", resource: resource %>
+      <%= render "users/shared/error_messages", resource: resource %>
         <table class="teble">
           <tr>
             <td><%= f.label :account_name, "アカウント名" %></td>

@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   # 会員用
   devise_for :users, skip: [:passwords] , controllers: {
-  registrations: "user/registrations",
-  sessions: 'user/sessions'
+  registrations: "users/registrations",
+  sessions: 'users/sessions'
 }
 
    # 管理者用
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
 
   # 会員用
   # Top画面
-  root to: 'user/homes#top'
+  root to: 'users/homes#top'
 
   scope module: :users do
     # ホーム

@@ -27,7 +27,7 @@
             <li class="nav-item text-right">
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
             </li>
-            <li><%= render '/admin/searches/form' %></li>
+            <li><%= render '/admins/searches/form' %></li>
 
             <% elsif user_signed_in? %>
             <li class="nav-item text-right">
@@ -37,9 +37,9 @@
               <%= link_to "ホームへ", home_path, class: "nav-link" %>
             </li>
             <li class="nav-item text-right">
-              <%= link_to "ログアウト", destroy_user_session_path, class: "nav-link" %>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
             </li>
-            <li><%= render '/user/searches/form' %></li>
+            <li><%= render '/users/searches/form' %></li>
 
             <% else %>
             <li class="nav-item text-right">
@@ -51,7 +51,7 @@
             <li class="nav-item text-right">
               <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
             </li>
-            <li><%= render '/user/searches/form' %></li>
+            <li><%= render '/users/searches/form' %></li>
             <% end %>
           </ul>
         </div>

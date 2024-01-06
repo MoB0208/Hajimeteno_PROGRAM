@@ -1,4 +1,4 @@
-class Admin::CommentsController < ApplicationController
+class Admins::CommentsController < ApplicationController
   before_action :authenticate_admin!
 
   def index

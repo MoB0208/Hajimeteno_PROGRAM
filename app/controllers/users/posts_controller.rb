@@ -1,4 +1,4 @@
-class User::PostsController < ApplicationController
+class Users::PostsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def new
