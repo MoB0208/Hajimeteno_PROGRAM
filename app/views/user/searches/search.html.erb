@@ -1,2 +1,10 @@
-<h1>User::Searches#index</h1>
-<p>Find me in app/views/user/searches/index.html.erb</p>
+<% if @model == 'post' %>
+	<h3><%= @content %>の検索結果</h3>
+	<p><%= @records.count %>件</p>
+  <%= render 'post/index', posts: @records %>
+
+<% elsif @model == 'post_code' %>
+	<h3><%= @content %>の検索結果</h3>
+	<p><%= @records.count %>件</p>
+  <%= render 'post/code', post_codes: @records %>
+<% end %>

@@ -1,0 +1,18 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Main Code</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% posts.each do |post| %>
+      <tr>
+        <td><%= link_to post.main_code, admins_posts_show_path %></td>
+        <td><%= post.title %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

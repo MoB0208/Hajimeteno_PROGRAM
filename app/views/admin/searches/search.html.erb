@@ -1,7 +1,10 @@
 <% if @model == 'post' %>
-	<h3>Users search for "<%= @content %>"</h3>
-  <%= render 'users/index', users: @records %>
+	<h3><%= @content %>の検索結果</h3>
+	<p><%= @records.count %>件</p>
+  <%= render 'post/index', posts: @records %>
+
 <% elsif @model == 'post_code' %>
-	<h3>Books search for "<%= @content %>"</h3>
-  <%= render 'books/index', books: @records %>
+	<h3><%= @content %>の検索結果</h3>
+	<p><%= @records.count %>件</p>
+  <%= render 'post/code', post_codes: @records %>
 <% end %>

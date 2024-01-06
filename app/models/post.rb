@@ -7,4 +7,26 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :main_code, presence: true
+
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Post.where(title: content)
+    elsif method == 'forward'
+      Post.where('title LIKE ?', content+'%')
+    elsif method == 'backward'
+      Post.where('title LIKE ?', '%'+content)
+    else
+      Post.where('title LIKE ?', '%'+content+'%')
+    end
+
+    if method == 'perfect'
+      Post.where(main_code: content)
+    elsif method == 'forward'
+      Post.where('main_code LIKE ?', content+'%')
+    elsif method == 'backward'
+      Post.where('main_code LIKE ?', '%'+content)
+    else
+      Post.where('main_code LIKE ?', '%'+content+'%')
+    end
+  end
 end
