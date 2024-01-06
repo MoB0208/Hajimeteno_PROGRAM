@@ -8,6 +8,10 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :main_code, presence: true
 
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
+
   def self.search_for(content, method)
     if method == 'perfect'
       Post.where(title: content)

@@ -1,3 +1,4 @@
+<!--ホーム画面-->
 <div class="container-fluid">
   <div class="bg-white my-5 p-5">
     <h3>ホーム</h3>
@@ -6,6 +7,7 @@
       <% @favorite_posts.each do |post| %>
         <%= link_to post.main_code, user_posts_show_path %>
         <%= post.title %>
+        <% render '/favorites/form' %>
       <% end %>
     </div>
     <div>

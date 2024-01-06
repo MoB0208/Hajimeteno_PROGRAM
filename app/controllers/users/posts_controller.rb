@@ -34,6 +34,8 @@ class Users::PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
+    @posts = @post.main_code
   end
 
   private

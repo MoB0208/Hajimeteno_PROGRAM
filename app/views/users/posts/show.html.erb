@@ -1,2 +1,31 @@
-<h1>User::Posts#show</h1>
-<p>Find me in app/views/user/posts/show.html.erb</p>
+<!--記事の詳細閲覧-->
+<div>
+  <!--記事-->
+  <% @post.each do |post| %>
+    <%= post.title %>
+    <%= post.main_code %>
+    <%= post.genre.genre_name %>
+    <%= post.genre.version %>
+    <%= post.post_code.code %>
+    <%= post.post_code.body %>
+  <% end %>
+</div>
+
+<div>
+  <!--お気に入り-->
+  <% render '/favorites/form' %>
+</div>
+
+<div>
+  <!--同じコードの関連記事-->
+  <% @posts.each do |post| %>
+    <%= link_to post.main_code, posts_show_path %>
+    <%= post.title %>
+  <% end %>
+</div>
+<div>
+  <!--違う言語の関連記事-->
+</div>
+<div>
+  <!--コメント-->
+</div>

@@ -1,22 +1,27 @@
 <div class="container-fluid">
 
   <div>
+    <!--言語一覧-->
     <% @genres.each do |genre| %>
       <%= link_to genre.name, genres_index_path %>
     <% end %>
   </div>
 
   <div>
+    <!--お気に入りの多い投稿-->
     <% @favorite_posts.each do |post| %>
       <%= link_to post.main_code, posts_show_path %>
       <%= post.title %>
+      <% render '/favorites/form' %>
     <% end %>
   </div>
 
   <div>
+    <!--最新の投稿-->
     <% @posts.each do |post| %>
       <%= link_to post.main_code, posts_show_path %>
       <%= post.title %>
+      <% render '/favorites/form' %>
     <% end %>
   </div>
 </div>
