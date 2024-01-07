@@ -12,6 +12,6 @@ class User < ApplicationRecord
   validates :account_name, uniqueness: true
 
   def active_for_authentication?
-    super && (is_active == true)
+    super && (status == true)
   end
 end
