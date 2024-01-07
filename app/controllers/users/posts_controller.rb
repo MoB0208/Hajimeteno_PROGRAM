@@ -19,6 +19,8 @@ class Users::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @genre = @post.genre
+    @post_code = @post.post_code
   end
 
   def update
