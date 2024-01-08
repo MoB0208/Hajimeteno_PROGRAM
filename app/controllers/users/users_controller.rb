@@ -18,11 +18,11 @@ class Users::UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update(user_params)
-      redirect_to user_infomation_edit_path(@user), notice: "編集内容を保存しました。"
+      redirect_to home_path, notice: "編集内容を保存しました。"
     else
-      render user_infomation_edit_path(@user)
+      render infomation_edit_path
     end
   end
 
