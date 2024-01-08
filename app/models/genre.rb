@@ -22,7 +22,7 @@ class Genre < ApplicationRecord
     ruby_on_rails: 17,
     sinatra: 18,
     padrino: 19,
-    angularJS: 20,
+    angularjs: 20,
     vue_js: 21,
     ember_js: 22,
     spring_framework: 23,

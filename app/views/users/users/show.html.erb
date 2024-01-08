@@ -6,18 +6,18 @@
     <div>
       <% if @favorite_posts %>
         <% @favorite_posts.each do |post| %>
-          <%= link_to post.main_code, user_posts_show_path %>
+          <%= link_to post.main_code, posts_show_path %>
           <%= post.title %>
           <% render '/favorites/form' %>
         <% end %>
       <% else %>
-        <p>お気に入り登録をした記事はありません</p>
+        <p>お気に入りに登録した記事はありません</p>
       <% end %>
     </div>
     <div>
       <% if @favorite_posts %>
         <% @user_posts.each do |post| %>
-          <%= link_to post.main_code, user_posts_show_path %>
+          <%= link_to post.main_code, posts_show_path %>
           <%= post.title %>
         <% end %>
       <% else %>
