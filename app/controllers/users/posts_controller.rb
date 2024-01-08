@@ -10,10 +10,11 @@ class Users::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
+      puts @post.errors.full_messages
       redirect_to user_home_path(@user), notice: "投稿しました。"
     else
       @posts = Post.all
-      redirect_to user_posts_new_path
+      render :new
     end
   end
 
