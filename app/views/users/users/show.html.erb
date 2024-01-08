@@ -2,18 +2,26 @@
 <div class="container-fluid">
   <div class="bg-white my-5 p-5">
     <h3>ホーム</h3>
-    <div><% render '/info' %></div>
+    <div><%= render 'info', user: @user %></div>
     <div>
-      <% @favorite_posts.each do |post| %>
-        <%= link_to post.main_code, user_posts_show_path %>
-        <%= post.title %>
-        <% render '/favorites/form' %>
+      <% if @favorite_posts %>
+        <% @favorite_posts.each do |post| %>
+          <%= link_to post.main_code, user_posts_show_path %>
+          <%= post.title %>
+          <% render '/favorites/form' %>
+        <% end %>
+      <% else %>
+        <p>お気に入りの投稿はありません</p>
       <% end %>
     </div>
     <div>
-      <% @user_post.each do |post| %>
-        <%= link_to post.main_code, user_posts_show_path %>
-        <%= post.title %>
+      <% if @favorite_posts %>
+        <% @user_posts.each do |post| %>
+          <%= link_to post.main_code, user_posts_show_path %>
+          <%= post.title %>
+        <% end %>
+      <% else %>
+        <p>あなたが投稿した記事はありません</p>
       <% end %>
     </div>
     <div>

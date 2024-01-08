@@ -1,10 +1,16 @@
 class Users::UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user, only: [:favorites]
+
+  def favorites
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_posts = Post.find(favorites)
+  end
 
   def show
     @user = current_user
-    @favorite_posts = current_user.favorite.post.all
-    @user_post = current_user.post.all
+    # @favorite_posts = current_user.favorite_posts.all
+    @user_posts = current_user.posts.all
   end
 
   def edit
@@ -24,5 +30,9 @@ class Users::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:account_name,:birthdate,:email,:image)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end

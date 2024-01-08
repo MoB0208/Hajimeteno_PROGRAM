@@ -79,5 +79,8 @@ Rails.application.routes.draw do
     post 'favorites/create'
     delete 'favorites/destroy'
     get '/favorites', to: 'favorites#index', as: 'favorites_index'
+    # member do
+    #   get :favorites
+    # end
   end
 end
