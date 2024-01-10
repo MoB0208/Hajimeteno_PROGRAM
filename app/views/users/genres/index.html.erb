@@ -1,2 +1,10 @@
-<h1>User::Genres#index</h1>
-<p>Find me in app/views/user/genres/index.html.erb</p>
+<!--言語毎のコード一覧-->
+<% if @posts %>
+  <% @posts.each do |post| %>
+    <%= link_to post.main_code, posts_show_path %>
+    <%= post.title %>
+    <% render '/favorites/form' %>
+  <% end %>
+<% else %>
+  <p>該当する記事は</p>
+<% end %>

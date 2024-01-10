@@ -1,10 +1,8 @@
+<!--Top画面-->
 <div class="container-fluid">
-
   <div class="bg-white my-5 p-5">
     <!--言語一覧-->
-    <% @genres.each do |genre| %>
-      <%= link_to genre.name, genres_index_path %>
-    <% end %>
+    <% render '/users/genres/info' %>
   </div>
 
   <div class="bg-white my-5 p-5">
