@@ -8,7 +8,7 @@
         <% @favorite_posts.each do |post| %>
           <%= link_to post.main_code, posts_show_path %>
           <%= post.title %>
-          <% render '/favorites/form' %>
+          <%= render '/favorites/form' %>
         <% end %>
       <% else %>
         <p>お気に入りに登録した記事はありません</p>

@@ -34,6 +34,10 @@ class Users::PostsController < ApplicationController
   end
 
   def index
+    if params[:genre_name]
+    else
+    @posts = Post.all
+    end
   end
 
   def show

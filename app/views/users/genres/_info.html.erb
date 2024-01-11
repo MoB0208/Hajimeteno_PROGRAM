@@ -1,4 +1,6 @@
 <!--言語一覧検索用-->
 <div>
-  <%= link_to "JavaScript", genres_index_path(id: 1) %>
+  <% Genre.genre_names_i18n.keys.map.each do |genre_name| %>
+    <%= link_to I18n.t("enums.genre.genre_name.#{genre_name}"), "/" %>
+  <% end %>
 </div>

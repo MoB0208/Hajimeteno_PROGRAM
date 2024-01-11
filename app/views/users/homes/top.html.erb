@@ -2,7 +2,7 @@
 <div class="container-fluid">
   <div class="bg-white my-5 p-5">
     <!--言語一覧-->
-    <% render '/users/genres/info' %>
+    <%= render '/users/genres/info' %>
   </div>
 
   <div class="bg-white my-5 p-5">
@@ -11,7 +11,7 @@
       <% @favorite_posts.each do |post| %>
         <%= link_to post.main_code, posts_show_path %>
         <%= post.title %>
-        <% render '/favorites/form' %>
+        <%= render '/favorites/form' %>
       <% end %>
     <% else %>
       <p>現在、お気に入り登録された記事はありません</p>
@@ -24,7 +24,7 @@
       <% @posts.each do |post| %>
         <%= link_to post.main_code, posts_show_path %>
         <%= post.title %>
-        <% render '/favorites/form' %>
+        <%= render '/favorites/form' %>
       <% end %>
     <% else %>
       <p>最近投稿された記事はありません</p>
