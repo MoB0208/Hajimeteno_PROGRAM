@@ -22,7 +22,7 @@ ja:
         ruby_on_rails: "Ruby on Rails"
         sinatra: "Sinatra"
         padrino: "Padrino"
-        angularJS: "AngularJS"
+        angularjs: "AngularJS"
         vue_js: "Vue.js"
         ember_js: "Ember.js"
         spring_framework: "Spring Framework"
