@@ -2,30 +2,37 @@
 <div class="container-fluid">
   <div class="bg-white my-5 p-5">
     <h3>ホーム</h3>
-    <div><%= render 'info', user: @user %></div>
-    <div>
-      <% if @favorite_posts %>
-        <% @favorite_posts.each do |post| %>
-          <%= link_to post.main_code, posts_show_path %>
-          <%= post.title %>
-          <%= render '/favorites/form' %>
+    <div class="row" >
+      <div class="col-3">
+        <!--会員情報詳細閲覧-->
+        <%= render 'info', user: @user %>
+      </div>
+      <div class="col">
+        <h5>あなたがお気に入りに登録した記事</h5>
+        <% if @favorite_posts %>
+          <% @favorite_posts.each do |post| %>
+            <%= link_to post.main_code, posts_show_path %>
+            <%= post.title %>
+            <%= render '/favorites/form' %>
+          <% end %>
+        <% else %>
+          <p>お気に入りに登録した記事はありません</p>
         <% end %>
-      <% else %>
-        <p>お気に入りに登録した記事はありません</p>
-      <% end %>
-    </div>
-    <div>
-      <% if @favorite_posts %>
-        <% @user_posts.each do |post| %>
-          <%= link_to post.main_code, posts_show_path %>
-          <%= post.title %>
+      </div>
+      <div class="col">
+        <h5>あなたが投稿した記事</h5>
+        <div class="text-right">
+          <%= link_to "投稿する", posts_new_path, class: "btn btn-success" %>
+        </div>
+        <% if @favorite_posts %>
+          <% @user_posts.each do |post| %>
+            <%= link_to post.main_code, posts_show_path %>
+            <%= post.title %>
+          <% end %>
+        <% else %>
+          <p>あなたが投稿した記事はありません</p>
         <% end %>
-      <% else %>
-        <p>あなたが投稿した記事はありません</p>
-      <% end %>
-    </div>
-    <div>
-      <%= link_to "投稿する", posts_new_path, class: "btn btn-success" %>
+      </div>
     </div>
   </div>
 </div>

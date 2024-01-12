@@ -1,40 +1,44 @@
+<!--ログイン画面-->
 <div class="container-fluid">
-  <div class="row bg-white flex-column">
-    <h3 class="mx-5 my-5">ログイン</h3>
-    <div class="mx-5">
-      <p>会員の方はこちらからログイン</p>
-    </div>
-    <div class="center-block mx-auto">
-      <%= form_with model: @user, url: new_user_session_path, local: true do |f| %>
-        <table class="teble mt-auto">
-          <tr>
-            <td><%= f.label :email, "メールアドレス" %></td>
-            <td>
-              <div class="field mx-5">
-                <%= f.email_field :email, autofocus: true, class: "email", placeholder:"sample@example.com", size: 60 %>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><%= f.label :password, "パスワード" %></td>
-            <td>
-              <div class="field mx-5">
-                <%= f.password_field :password, autocomplete: "current-password", size: 60 %>
-              </div>
-            </td>
-          </tr>
-        </table>
-      <div class="text-center mt-3">
-        <%= f.submit "ログイン", class: "btn btn-primary" %>
+  <div class="row flex-column m-5 p-5">
+    <div class="col-8 bg-white mx-auto p-5">
+      <h3>ログイン</h3>
+      <div class="m-5 bg-info">
+        <h5>会員の方はこちらからログイン</h5>
+        <div class="center-block mx-auto">
+          <%= form_with model: @user, url: new_user_session_path, local: true do |f| %>
+          <div class="mx-5">
+            <table>
+              <tr>
+                <td><%= f.label :email, "メールアドレス" %></td>
+                <td>
+                  <div class="field mx-5">
+                    <%= f.email_field :email, autofocus: true, class: "email", placeholder:"sample@example.com", size: 70 %>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><%= f.label :password, "パスワード" %></td>
+                <td>
+                  <div class="field mx-5">
+                    <%= f.password_field :password, autocomplete: "current-password", size: 70 %>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="text-center mt-3">
+            <%= f.submit "ログイン", class: "btn btn-primary" %>
+          <% end %>
+          </div>
+        </div>
+        <div class="row flex-column pt-5">
+          <h5>会員登録がお済みでない方</h5>
+          <div class="mx-5 px-auto bg-success">
+            <p><%= link_to "こちら", new_user_registration_path %>から新規登録を行ってください。</p>
+          </div>
+        </div>
       </div>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="row flex-column mx-5 my-5">
-    <p>会員登録がお済みでない方</p>
-    <div class="mx-5 px-5">
-      <p><%= link_to "こちら", new_user_registration_path %>から新規登録を行ってください。</p>
     </div>
   </div>
 </div>

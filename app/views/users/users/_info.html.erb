@@ -1,15 +1,12 @@
 <!--会員情報詳細閲覧-->
 <div class="mt-3">
   <%= flash[:notice] %>
+  <%= image_tag user.get_image, size: "200x200" %>
   <table class="table table-bordered mt-3">
     <colgroup>
+      <col class="col-md-2">
       <col class="col-md-3">
-      <col class="col-md-6">
     </colgroup>
-    <tr>
-      <td class="table-warning"></td>
-      <td><%= image_tag user.get_image, size: "200x200" %></td>
-    </tr>
     <tr>
       <td class="table-warning">アカウント名</td>
       <td><%= user.account_name %></td>
@@ -26,5 +23,7 @@
 </div>
 <div>
   <p>アイコンを設定する場合はこちらから</p>
-  <%= link_to "編集する", infomation_edit_path, class: "btn btn-success text-white edit_user_#{@user.id}" %>
+  <div class="text-right">
+    <%= link_to "編集する", infomation_edit_path, class: "btn btn-success text-white edit_user_#{@user.id}" %>
+  </div>
 </div>

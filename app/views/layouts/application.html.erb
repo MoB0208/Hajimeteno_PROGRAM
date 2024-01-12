@@ -17,37 +17,39 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon" style="color: blue;"></span>
         </button>
-        <div class="collapse navbar-collapse " id="navbarNav">
-          <ul class="navbar-nav">
-            <% if admin_signed_in? %>
-              <h2>管理者用</h2>
-              <li class="nav-item text-right">
-                <%= link_to "Topへ", admins_root_path, class: "nav-link" %>
-              </li>
-              <li class="nav-item text-right">
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
-              </li>
-              <li><%= render '/admins/searches/form' %></li>
+        <div class="text-right">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <% if admin_signed_in? %>
+                <h2>管理者用</h2>
+                <li class="nav-item text-right">
+                  <%= link_to "Topへ", admins_root_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item text-right">
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+                </li>
+                <li><%= render '/admins/searches/form' %></li>
 
-            <% elsif user_signed_in? %>
-              <li class="nav-item text-right">
-                <%= link_to "ホームへ", home_path, class: "nav-link" %>
-              </li>
-              <li class="nav-item text-right">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
-              </li>
-              <li><%= render '/users/searches/form' %></li>
+              <% elsif user_signed_in? %>
+                <li class="nav-item text-right">
+                  <%= link_to "ホームへ", home_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item text-right">
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
+                </li>
+                <li><%= render '/users/searches/form' %></li>
 
-            <% else %>
-              <li class="nav-item text-right">
-                <%= link_to "新規会員登録", new_user_registration_path, class: "nav-link" %>
-              </li>
-              <li class="nav-item text-right">
-                <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
-              </li>
-              <li><%= render '/users/searches/form' %></li>
-            <% end %>
-          </ul>
+              <% else %>
+                <li class="nav-item text-right">
+                  <%= link_to "新規会員登録", new_user_registration_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item text-right">
+                  <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+                </li>
+                <li><%= render '/users/searches/form' %></li>
+              <% end %>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
