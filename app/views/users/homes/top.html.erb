@@ -1,11 +1,11 @@
 <!--Top画面-->
 <div class="container-fluid">
   <div class="row">
-    <div class="col-2 bg-white m-5 p-5">
+    <div class="col-2 rounded bg-white m-5 p-5">
       <!--言語一覧-->
       <%= render '/users/genres/info' %>
     </div>
-    <div class="col bg-white my-5 p-5">
+    <div class="col rounded bg-white my-5 p-5">
       <!--お気に入りの多い記事-->
       <h3>お気に入りの多い記事</h3>
       <% if @favorite_posts %>
@@ -18,7 +18,7 @@
         <p>現在、お気に入り登録された記事はありません</p>
       <% end %>
     </div>
-    <div class="col bg-white m-5 p-5">
+    <div class="col rounded bg-white m-5 p-5">
       <!--最新の記事-->
       <h3>最新の記事</h3>
       <% if @posts %>

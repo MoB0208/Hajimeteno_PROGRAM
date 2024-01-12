@@ -1,7 +1,7 @@
 <!--記事の投稿フォーム-->
 <div class="container-fluid">
   <div class="row flex-column m-5 p-5">
-    <div class="col-8 bg-white mx-auto p-5">
+    <div class="col-8 rounded bg-white mx-auto p-5">
       <h3>新規投稿</h3>
       <%= form_with model:@post, url: posts_new_path, local:true do |f| %>
       <%= form_with model:@post_code,local:true do |f| %>

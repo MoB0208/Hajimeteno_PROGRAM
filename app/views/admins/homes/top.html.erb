@@ -1,11 +1,11 @@
 <!--管理者用Top画面-->
 <div class="container-fluid">
   <div class="row">
-    <div class="col-1 bg-white m-5 py-5">
+    <div class="col-1 rounded bg-white m-5 py-5">
       <!--言語一覧-->
       <%= render '/admins/genres/info' %>
     </div>
-    <div class="col bg-white my-5 p-5">
+    <div class="col rounded bg-white my-5 p-5">
       <h3>新着記事</h3>
       <% if @posts %>
         <% @posts.each do |post| %>
@@ -20,7 +20,7 @@
         <p>最近投稿された記事はありません</p>
       <% end %>
     </div>
-    <div class="col bg-white m-5 p-5">
+    <div class="col rounded bg-white m-5 p-5">
       <h3>コメント一覧</h3>
       <% if @comments %>
         <% @comments.each do |comment| %>
@@ -35,7 +35,7 @@
         <p>現在、コメントはありません</p>
       <% end %>
     </div>
-    <div class="col-2 bg-white my-5 mr-5 p-5">
+    <div class="col-2 rounded bg-white my-5 mr-5 p-5">
       <h3>会員一覧</h3>
       <% if @users %>
         <% @users.each do |user| %>
