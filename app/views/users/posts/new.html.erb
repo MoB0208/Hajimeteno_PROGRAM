@@ -1,30 +1,35 @@
 <!--記事の投稿フォーム-->
-<h3>新規投稿</h3>
-<%= form_with model:@post, url: posts_new_path, local:true do |f| %>
-  <%= form_with model:@post_code,local:true do |f| %>
-
-    <div class="form-group">
-      <%= f.label :title, "タイトル" %>
-      <%= f.text_field :title, class: 'form-control title', placeholder:"タイトルを記入してください。" %>
+<div class="container-fluid">
+  <div class="row flex-column m-5 p-5">
+    <div class="col-8 bg-white mx-auto p-5">
+      <h3>新規投稿</h3>
+      <%= form_with model:@post, url: posts_new_path, local:true do |f| %>
+      <%= form_with model:@post_code,local:true do |f| %>
+        <div class="form-group">
+          <%= f.label :title, "タイトル" %>
+          <%= f.text_field :title, class: 'form-control title', placeholder:"タイトルを記入してください。" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :main_code, "メインコード" %>
+          <%= f.text_area :main_code, class: 'form-control main_code', placeholder:"今回の記事のメインとなるコードを記入してください。" %>
+        </div>
+        <div class="form-group">
+          <!--言語一覧選択-->
+          <%= render '/users/genres/form' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :code, "コード" %>
+          <%= f.text_field :code, class: 'form-control code', placeholder:"使用例を記入してください。" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :body, "本文" %>
+          <%= f.text_area :body, class: 'form-control body', placeholder:"詳しい使い方や説明を記入してください。" %>
+        </div>
+        <div class="form-group text-center">
+          <%= f.submit "投稿する", class: 'btn btn-success' %>
+        </div>
+      <% end %>
+    <% end %>
     </div>
-    <div class="form-group">
-      <%= f.label :main_code, "メインコード" %>
-      <%= f.text_area :main_code, class: 'form-control main_code', placeholder:"今回の記事のメインとなるコードを記入してください。" %>
-    </div>
-    <div class="form-group">
-      <!--言語一覧選択-->
-      <%= render '/users/genres/form' %>
-    </div>
-    <div class="form-group">
-      <%= f.label :code, "コード" %>
-      <%= f.text_field :code, class: 'form-control code', placeholder:"実際の使用例を記入してください。" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :body, "本文" %>
-      <%= f.text_area :body, class: 'form-control body', placeholder:"詳しい使い方や説明を記入してください。" %>
-    </div>
-    <div class="form-group">
-      <%= f.submit "投稿する", class: 'btn btn-success' %>
-    </div>
-  <% end %>
-<% end %>
+  </div>
+</div>

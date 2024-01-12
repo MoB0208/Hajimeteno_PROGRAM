@@ -1,10 +1,12 @@
 <!--会員情報詳細閲覧-->
 <div class="mt-3">
   <%= flash[:notice] %>
-  <%= image_tag user.get_image, size: "200x200" %>
+  <div class="text-center my-5">
+    <%= image_tag user.get_image, size: "200x200" %>
+  </div>
   <table class="table table-bordered mt-3">
     <colgroup>
-      <col class="col-md-2">
+      <col class="col-md-3">
       <col class="col-md-3">
     </colgroup>
     <tr>

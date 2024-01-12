@@ -1,53 +1,55 @@
 <!--登録情報編-->
 <div class="container-fluid">
-  <div class="bg-white my-5 p-5">
-    <h3>登録情報編集</h3>
-    <div class="mt-3">
-      <%= form_with model: @user, url: users_update_path(@user) do |f| %>
-        <table class="table table-bordered mt-3">
-          <colgroup>
-            <col class="col-md-3">
-            <col class="col-md-6">
-          </colgroup>
-          <tr>
-            <td class="table-warning">
-              <%= f.label :image, "アイコン" %>
-            </td>
-            <td>
-              <%= f.file_field :image, accept: "image/*" %>
-            </td>
-          </tr>
-          <tr>
-            <td class="table-warning">
-              <%= f.label :account_name, "アカウント名" %>
-            </td>
-            <td>
-              <%= f.text_field :account_name, placeholder:"はじプロ" %>
-            </td>
-          </tr>
-          <tr>
-            <td class="table-warning">
-              <%= f.label :birthdate, "生年月日" %>
-            </td>
-            <td>
-              <%= f.text_field :birthdate, placeholder:"2000年1月1日→20000101" %>
-            </td>
-          </tr>
-          <tr>
-            <td class="table-warning">
-              <%= f.label :email, "メールアドレス" %>
-            </td>
-            <td>
-              <%= f.text_field :email, placeholder:"sample@example.com" %>
-            </td>
-          </tr>
-        </table>
+  <div class="row my-5 p-5">
+    <div class="col-8 bg-white mx-auto p-5">
+      <h3>登録情報編集</h3>
+      <div class="mt-5 mx-5">
+        <%= form_with model: @user, url: users_update_path(@user) do |f| %>
+          <table class="table table-bordered mt-3">
+            <colgroup>
+              <col class="col-md-2">
+              <col class="col-md-3">
+            </colgroup>
+            <tr>
+              <td class="table-warning">
+                <%= f.label :image, "アイコン" %>
+              </td>
+              <td>
+                <%= f.file_field :image, accept: "image/*" %>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-warning">
+                <%= f.label :account_name, "アカウント名" %>
+              </td>
+              <td>
+                <%= f.text_field :account_name, placeholder:"はじプロ" %>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-warning">
+                <%= f.label :birthdate, "生年月日" %>
+              </td>
+              <td>
+                <%= f.text_field :birthdate, placeholder:"2000年1月1日→20000101" %>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-warning">
+                <%= f.label :email, "メールアドレス" %>
+              </td>
+              <td>
+                <%= f.text_field :email, placeholder:"sample@example.com" %>
+              </td>
+            </tr>
+          </table>
+          <div class="text-center pt-3">
+            <%= f.submit "変更を保存", class: "btn btn-sm btn-success" %>
+          </div>
+        <% end %>
         <div>
-          <%= f.submit "変更を保存", class: "btn btn-sm btn-success" %>
+          <%= link_to "戻る", home_path, class: "btn btn-sm btn-success" %>
         </div>
-      <% end %>
-      <div>
-        <%= link_to "戻る", home_path, class: "btn btn-sm btn-success" %>
       </div>
     </div>
   </div>
