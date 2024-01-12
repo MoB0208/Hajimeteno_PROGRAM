@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     get '/users', to: 'users#index', as: 'users_index'
     get '/users/:id', to: 'users#show', as: 'users_show'
     get '/users/:id/edit', to: 'users#edit', as: 'users_edit'
-    patch 'users/update'
+    patch 'users/:id/update', to: 'users#update', as: 'users_update'
 
     # 言語一覧
     get '/genres', to: 'genres#index', as: 'genres_index'
