@@ -1,48 +1,39 @@
 <!--記事の詳細閲覧-->
-<div>
-  <!--記事-->
-  <% @post.each do |post| %>
-    <%= post.title %>
-    <%= post.main_code %>
-    <%= post.genre.genre_name %>
-    <%= post.genre.version %>
-    <%= post.post_code.code %>
-    <%= post.post_code.body %>
-  <% end %>
-</div>
+<div class="container-fluid">
+  <div class="row flex-column m-5 p-5">
+    <div class="col-8 rounded bg-white mx-auto p-5">
+      <div>
+        <!--記事-->
+        <% @post.each do |post| %>
+          <%= post.title %>
+          <%= post.main_code %>
+          <%= post.created_at.strftime('%Y/%m/%d') %>
+          <%= post.genre.genre_name %>
+          <%= post.genre.version %>
+          <%= post.post_code.code %>
+          <%= post.post_code.body %>
+        <% end %>
+      </div>
 
-<div>
-  <!--お気に入り-->
-  <%= render '/favorites/form' %>
-</div>
+      <div>
+        <!--お気に入り-->
+        <%= render '/users/favorites/form', post: post %>
+      </div>
 
-<div>
-  <!--同じコードの関連記事-->
-  <% @posts.each do |post| %>
-    <%= link_to post.main_code, posts_show_path %>
-    <%= post.title %>
-  <% end %>
-</div>
-<div>
-  <!--違う言語の関連記事-->
-</div>
-<div>
-  <!--コメント-->
-  <div>
-    <p>コメント件数：<%= @post.comments.count %></p>
-    <% @post.comments.each do |comment| %>
-      <p><%= image_tag comment.user.get_profile_image(100,100) %></p>
-      <%= comment.user.name %>
-      <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment_body %>
-      <% if comment.user == current_user %>
-        <%= link_to "削除", comments_destroy_path(comment.post, comment), method: :delete %>
-      <% end %>
-    <% end %>
-  </div>
-  <div>
-    <%= form_with model: [@post, @comment] do |f| %>
-      <%= f.text_area :comment_body, rows: '5', placeholder: "コメントはこちら" %>
-      <%= f.submit "送信する" %>
-    <% end %>
+      <div>
+        <!--同じコードの関連記事-->
+        <% @posts.each do |post| %>
+          <%= link_to post.main_code, posts_show_path(post) %>
+          <%= post.title %>
+        <% end %>
+      </div>
+      <div>
+        <!--違う言語の関連記事-->
+      </div>
+      <div>
+        <!--コメント-->
+        <%= render '/users/comments/form' %>
+      </div>
+    </div>
   </div>
 </div>

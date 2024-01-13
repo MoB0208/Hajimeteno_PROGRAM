@@ -18,7 +18,7 @@
           <%#= render '/users/genres/form' %>
         </div>
         <div>
-          <%= fields_for :post_code do |post_code| %>
+          <%= f.fields_for :post_code do |post_code| %>
             <div class="form-group">
               <%= post_code.label :code, "コード" %>
               <%= post_code.text_field :code, class: 'form-control code', placeholder:"使用例を記入してください。" %>

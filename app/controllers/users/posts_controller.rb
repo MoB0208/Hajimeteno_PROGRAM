@@ -9,10 +9,16 @@ class Users::PostsController < ApplicationController
 
   def create
     @user = current_user
+    #@post = current_user.posts.new(post_params)
     @post = Post.new(post_params)
     @post_code = @post.post_codes.new(id: params[:id])
     @post.user_id = current_user.id
     if @post.save
+      if @post_code.save
+        puts @post_code.errors.full_messages
+      else
+        render :new
+      end
       puts @post.errors.full_messages
       redirect_to users_home_path(@user), notice: "投稿しました。"
     else
@@ -52,12 +58,12 @@ class Users::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :main_code)
+    params.require(:post).permit(:title, :main_code, post_code_attributes: [:code, :body])
   end
 
-  def post_code_params
-    params.require(:post_code).permit(:code, :body)
-  end
+  # def post_code_params
+  #   params.require(:post_code).permit(:code, :body)
+  # end
 
   def genre_params
     params.require(:genre).permit(:genre_name, :version)

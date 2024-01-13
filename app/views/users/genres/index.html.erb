@@ -1,9 +1,9 @@
 <!--言語毎のコード一覧-->
 <% if @posts %>
   <% @posts.each do |post| %>
-    <%= link_to post.main_code, posts_show_path %>
+    <%= link_to post.main_code, posts_show_path(post) %>
     <%= post.title %>
-    <%= render '/favorites/form' %>
+    <%= render '/users/favorites/form', post: post %>
   <% end %>
 <% else %>
   <p>該当する記事はありません。</p>
