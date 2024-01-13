@@ -1,4 +1,4 @@
-<!--お気に入りテンプレ-->
+<!--お気に入り登録用-->
   <% if @post.favorited_by?(current_user) %>
     <p>
       <%= link_to favorites_destroy_path(@post), method: :delete do %>
