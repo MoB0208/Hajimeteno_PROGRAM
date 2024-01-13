@@ -10,8 +10,7 @@ class Users::PostsController < ApplicationController
   def create
     @user = current_user
     @post = Post.new(post_params)
-    @post_code = PostCode.new(post_code_params)
-    @genre = Genre.new(genre_params)
+    @post_code = @post.post_codes.new(id: params[:id])
     @post.user_id = current_user.id
     if @post.save
       puts @post.errors.full_messages
