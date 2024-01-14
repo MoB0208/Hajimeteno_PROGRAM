@@ -1,6 +1,5 @@
 <!--言語一覧選択用-->
 <%= f.fields_for :genre do |genre| %>
-<%#= form_with model:@genre,local:true do |f| %>
   <div class="form-group">
     <p>言語</p>
     &emsp;<%= genre.radio_button :genre_name, Genre.genre_names.key(0) %>

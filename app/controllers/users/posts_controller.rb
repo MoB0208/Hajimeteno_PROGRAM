@@ -60,12 +60,4 @@ class Users::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :main_code)
   end
-
-  # def post_code_params
-  #   params.require(:post).permit(post_code:[:code, :body])
-  # end
-
-  # def genre_params
-  #   params.require(:genre).permit(:genre_name, :version)
-  # end
 end
