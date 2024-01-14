@@ -9,6 +9,10 @@ class Admins::SearchesController < ApplicationController
       @records = Post.search_for(@content, @method)
     else
       @records = PostCode.search_for(@content, @method)
+    else
+      @records = Content.search_for(@content, @method)
+    else
+      @records = MainText.search_for(@content, @method)
     end
   end
 

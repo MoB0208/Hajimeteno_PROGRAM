@@ -10,13 +10,19 @@ class Users::PostsController < ApplicationController
   def create
     @user = current_user
     @post = Post.new(post_params)
-    @post_code = @post.post_codes.build(
-      code: params[:post][:post_code][:code],
-      body: params[:post][:post_code][:body],
-    )
     @genre = @post.genres.build(
       genre_name: params[:post][:genre][:genre_name],
       version: params[:post][:genre][:version],
+    )
+    @content = @post.contents.build(
+      table_of_content: params[:post][:content][:table_of_content],
+    )
+    @main_text = @post.main_texts.build(
+      body: params[:post][:main_text][:body],
+    )
+    @post_code = @post.post_codes.build(
+      position: params[:post][:post_code][:position],
+      code: params[:post][:post_code][:code],
     )
     @post.user_id = current_user.id
     if @post.save

@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :genres
   has_many :post_codes, dependent: :destroy
+  has_many :contents, dependent: :destroy
+  has_many :main_texts, dependent: :destroy
 
   validates :title, presence: true
   validates :main_code, presence: true

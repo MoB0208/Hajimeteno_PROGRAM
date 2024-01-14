@@ -1,0 +1,7 @@
+<!--本文記入用-->
+<%= f.fields_for :main_text do |main_text| %>
+  <div class="form-group">
+    <%= main_text.label :body, "本文" %>
+    <%= main_text.text_area :body, class: 'form-control body', placeholder:"本文を記入してください。" %>
+  </div>
+<% end %>
