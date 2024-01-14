@@ -14,6 +14,10 @@ class Users::PostsController < ApplicationController
       code: params[:post][:post_code][:code],
       body: params[:post][:post_code][:body],
     )
+    @genre = @post.genres.build(
+      genre_name: params[:post][:genre][:genre_name],
+      version: params[:post][:genre][:version],
+    )
     @post.user_id = current_user.id
     if @post.save
       redirect_to home_path, notice: "投稿しました。"
@@ -61,7 +65,7 @@ class Users::PostsController < ApplicationController
   #   params.require(:post).permit(post_code:[:code, :body])
   # end
 
-  def genre_params
-    params.require(:genre).permit(:genre_name, :version)
-  end
+  # def genre_params
+  #   params.require(:genre).permit(:genre_name, :version)
+  # end
 end

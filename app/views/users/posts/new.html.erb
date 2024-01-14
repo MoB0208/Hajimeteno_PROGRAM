@@ -4,7 +4,6 @@
     <div class="col-8 rounded bg-white mx-auto p-5">
       <h3>新規投稿</h3>
       <%= form_with model:@post, url: posts_create_path, local:true do |f| %>
-      <%#= form_with model:@post_code,local:true do |f2| %>
         <div class="form-group">
           <%= f.label :title, "タイトル" %>
           <%= f.text_field :title, class: 'form-control title', placeholder:"タイトルを記入してください。" %>
@@ -15,7 +14,7 @@
         </div>
         <div class="form-group">
           <!--言語一覧選択-->
-          <%#= render '/users/genres/form' %>
+          <%= render '/users/genres/form', f: f %>
         </div>
         <div>
           <%= f.fields_for :post_code do |post_code| %>
@@ -32,8 +31,7 @@
         <div class="form-group text-center">
           <%= f.submit "投稿する", class: 'btn btn-success' %>
         </div>
-      <%# end %>
-    <% end %>
+      <% end %>
     </div>
   </div>
 </div>
