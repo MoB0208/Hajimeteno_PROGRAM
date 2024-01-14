@@ -3,8 +3,10 @@ class Users::PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @post_code = PostCode.new
     @genre = Genre.new
+    @content = Content.new
+    @main_text = MainText.new
+    @post_code = PostCode.new
   end
 
   def create
@@ -57,6 +59,7 @@ class Users::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @genre = @post.genres
     @posts = @post.main_code
     @comment = Comment.new
   end

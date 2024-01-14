@@ -4,35 +4,42 @@
     <div class="col-8 rounded bg-white mx-auto p-5">
       <div>
         <!--記事-->
-        <% @post.each do |post| %>
-          <%= post.title %>
-          <%= post.main_code %>
-          <%= post.created_at.strftime('%Y/%m/%d') %>
-          <%= post.genre.genre_name %>
-          <%= post.genre.version %>
-          <%= post.post_code.code %>
-          <%= post.post_code.body %>
-        <% end %>
-      </div>
+          <%= @post.title %>
+          <%= @post.main_code %>
+          <%= @post.created_at.strftime('%Y/%m/%d') %>
+          <% @post.genres.each do |genre| %>
+            <%= t(".genre_name", default: genre.genre_name_i18n) %>
+            <%= genre.version %>
+          <% end %>
 
-      <div>
-        <!--お気に入り-->
-        <%= render '/users/favorites/form', post: post %>
+          <div>
+            <!--お気に入り-->
+            <%= render '/users/favorites/form', post: @post %>
+          </div>
+          <% @post.contents.each do |content| %>
+            <%= content.table_of_content %>
+          <% end %>
+          <%# @post.main_texts.each do |main_text| %>
+            <%#= main_texts.body %>
+          <%# end %>
+          <%= @post.post_codes.each do |post_code| %>
+            <%= post_code.position %>
+            <%= post_code.code %>
+          <% end %>
       </div>
-
       <div>
         <!--同じコードの関連記事-->
-        <% @posts.each do |post| %>
-          <%= link_to post.main_code, posts_show_path(post) %>
-          <%= post.title %>
-        <% end %>
+        <%# @posts.each do |post| %>
+          <%#= link_to post.main_code, posts_show_path(post) %>
+          <%#= post.title %>
+        <%# end %>
       </div>
       <div>
         <!--違う言語の関連記事-->
       </div>
       <div>
         <!--コメント-->
-        <%= render '/users/comments/form' %>
+        <%= render '/users/comments/form', post: @post %>
       </div>
     </div>
   </div>
