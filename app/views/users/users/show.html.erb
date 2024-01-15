@@ -20,7 +20,7 @@
           <% end %>
         <% else %>
           <div>
-            <p>お気に入りに登録した記事はありません</p>
+            <p>お気に入りに登録した記事はありません。</p>
           </div>
         <% end %>
       </div>
@@ -36,13 +36,13 @@
               <p><%= post.title %></p>
               <p><%= post.created_at.strftime('%Y/%m/%d') %></p>
               <div class="text-right">
-                <%= link_to "削除する", post_path(post), method: :delete, class: "btn btn-danger" %>
+                <%= link_to "削除する", post_path(post), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
               </div>
             </div>
           <% end %>
         <% else %>
           <div>
-            <p>あなたが投稿した記事はありません</p>
+            <p>あなたが投稿した記事はありません。</p>
           </div>
         <% end %>
       </div>
