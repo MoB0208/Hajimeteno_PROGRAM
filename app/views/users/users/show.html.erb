@@ -3,34 +3,44 @@
   <div class="row m-5" >
     <div class="col-3 rounded bg-white p-5">
       <!--会員情報詳細閲覧-->
-      <h3>ホーム</h3>
+      <h2>ホーム</h2>
       <%= render 'info', user: @user %>
     </div>
-    <div class="col rounded bg-white mx-5 p-5">
-      <div class="p-5">
-        <h5>あなたがお気に入りに登録した記事</h5>
+    <div class="col mx-5">
+      <div class="rounded bg-white p-5">
+        <h2>あなたがお気に入りに登録した記事</h2>
         <% if @favorite_posts %>
           <% @favorite_posts.each do |post| %>
-            <%= link_to post.main_code, posts_show_path(post) %>
-            <%= post.title %>
-            <%= render '/users/favorites/form', post: post %>
+            <div class="rounded bg-light my-3 p-2">
+              <h4><%= link_to post.main_code, posts_show_path(post) %></h4>
+              <p><%= post.title %></p>
+              <%= post.created_at.strftime('%Y/%m/%d') %>
+              <%= render '/users/favorites/form', post: post %>
+            </div>
           <% end %>
         <% else %>
-          <p>お気に入りに登録した記事はありません</p>
+          <div>
+            <p>お気に入りに登録した記事はありません</p>
+          </div>
         <% end %>
       </div>
-      <div class="p-5">
-        <h5>あなたが投稿した記事</h5>
+      <div class="rounded bg-white my-5 p-5">
+        <h2>あなたが投稿した記事</h2>
         <div class="text-right">
           <%= link_to "投稿する", posts_new_path, class: "btn btn-success" %>
         </div>
         <% if @user_posts %>
           <% @user_posts.each do |post| %>
-            <%= link_to post.main_code, posts_show_path(post) %>
-            <%= post.title %>
+            <div class="rounded bg-light my-3 p-2">
+              <h4><%= link_to post.main_code, posts_show_path(post) %></h4>
+              <p><%= post.title %></p>
+              <p><%= post.created_at.strftime('%Y/%m/%d') %></p>
+            </div>
           <% end %>
         <% else %>
-          <p>あなたが投稿した記事はありません</p>
+          <div>
+            <p>あなたが投稿した記事はありません</p>
+          </div>
         <% end %>
       </div>
     </div>
