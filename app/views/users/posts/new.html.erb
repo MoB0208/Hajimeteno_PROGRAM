@@ -3,7 +3,7 @@
   <div class="row flex-column m-5 p-5">
     <div class="col-8 rounded bg-white mx-auto p-5">
       <h3>新規投稿</h3>
-      <%= form_with model:@post, url: posts_create_path, local:true do |f| %>
+      <%= form_with model:@post, url: posts_path, method: :post, local:true do |f| %>
         <div class="form-group">
           <%= f.label :title, "タイトル" %>
           <%= f.text_field :title, class: 'form-control title', placeholder:"タイトルを記入してください。" %>

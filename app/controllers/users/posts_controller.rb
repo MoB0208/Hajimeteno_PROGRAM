@@ -44,7 +44,7 @@ class Users::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to users_home_path(@user), notice: "投稿を修正しました。"
+      redirect_to home_path, notice: "投稿を修正しました。"
     else
       render :edit
     end
@@ -62,6 +62,9 @@ class Users::PostsController < ApplicationController
     @genre = @post.genres
     @posts = @post.main_code
     @comment = Comment.new
+  end
+
+  def destroy
   end
 
   private

@@ -54,33 +54,22 @@ Rails.application.routes.draw do
     patch 'users/update'
 
     # 言語一覧
-    get '/genres/:id', to: 'genres#index', as: 'genres_index'
-    get '/genres/:id', to: 'genres#show', as: 'genres_show'
+    resources :genres, only: [:index, :show]
+    # get '/genres/:id', to: 'genres#index', as: 'genres_index'
+    # get '/genres/:id', to: 'genres#show', as: 'genres_show'
 
     # 投稿関連
-    get '/posts/new', to: 'posts#new', as: 'posts_new'
-    post '/posts/create' => 'posts#create'
-    get '/posts/:id/edit', to: 'posts#edit', as: 'posts_edit'
-    patch 'posts/update'
-    get '/posts', to: 'posts#index', as: 'posts_index'
-    get '/posts/:id', to: 'posts#show', as: 'posts_show'
-
     # コメント関連
-    post 'comments/create'
-    get '/comments/:id', to: 'comments#edit', as: 'comments_edit'
-    patch 'comments/update'
-    delete 'comments/destroy'
+    resources :posts, only: [:new, :create, :edit, :update, :index, :show, :destroy] do
+      resources :comments, only: [:create, :edit, :update, :destroy]
+    end
 
     # 検索
     get "search" => 'searches#search'
     get '/searches', to: 'searches#index', as: 'searches_index'
 
     # お気に入り
-    post 'favorites/create'
-    delete 'favorites/destroy'
-    get '/favorites', to: 'favorites#index', as: 'favorites_index'
-    # member do
-    #   get :favorites
-    # end
+    resources :favorites, only: [:create, :destroy, :index]
+
   end
 end

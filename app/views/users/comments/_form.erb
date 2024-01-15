@@ -2,16 +2,16 @@
 <div>
   <p>コメント件数：<%= @post.comments.count %></p>
   <% @post.comments.each do |comment| %>
-    <p><%= image_tag comment.user.get_profile_image(100,100) %></p>
-    <%= comment.user.name %>
+    <p><%= image_tag comment.user.get_image, size: "30x30" %></p>
+    <%= comment.user.account_name %>
     <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment_body %>
     <% if comment.user == current_user %>
-      <%= link_to "削除", comments_destroy_path(comment.post, comment), method: :delete %>
+      <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
     <% end %>
   <% end %>
 </div>
 <div>
-  <%= form_with model: [@post, @comment], url: comments_create_path , local:true do |f| %>
+  <%= form_with model: [@post, @comment], url: post_comments_path(post), local:true do |f| %>
     <%= f.text_area :comment_body, rows: '5', placeholder: "コメントはこちら" %>
     <%= f.submit "送信する" %>
   <% end %>

@@ -11,7 +11,7 @@
       <% if @favorite_posts %>
         <% @favorite_posts.each do |post| %>
           <div class="rounded bg-light my-3 p-2">
-            <h4><%= link_to post.main_code, posts_show_path(post) %></h4>
+            <h4><%= link_to post.main_code, post_path(post) %></h4>
             <p><%= post.title %></p>
             <p>
               <%= image_tag post.user.get_image, size: "30x30" %>
@@ -31,7 +31,7 @@
       <% if @posts %>
         <% @posts.each do |post| %>
           <div class="rounded bg-light my-3 p-2">
-            <h4><%= link_to post.main_code, posts_show_path(post) %></h4>
+            <h4><%= link_to post.main_code, post_path(post) %></h4>
             <p><%= post.title %></p>
             <p>
               <%= image_tag post.user.get_image, size: "30x30" %>
