@@ -1,6 +1,6 @@
 class Users::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:favorites]
+  before_action :set_user, only: [:favorites, :show]
 
   def favorites
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
@@ -9,7 +9,6 @@ class Users::UsersController < ApplicationController
 
   def show
     @user = current_user
-    # @favorite_posts = current_user.favorite_posts.all
     @user_posts = current_user.posts.all
   end
 
@@ -33,6 +32,6 @@ class Users::UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
   end
 end

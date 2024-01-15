@@ -38,6 +38,8 @@ class Users::PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @genre = @post.genre
+    @content = @post.content
+    @main_text = @post.main_text
     @post_code = @post.post_code
   end
 
@@ -65,6 +67,9 @@ class Users::PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to home_path, notice: "投稿を削除しました。"
   end
 
   private

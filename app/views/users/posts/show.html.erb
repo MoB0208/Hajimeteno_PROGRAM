@@ -22,6 +22,13 @@
             <!--お気に入り-->
             <%= render '/users/favorites/form', post: @post %>
           </div>
+          <div>
+            <!--記事編集-->
+            <% if @post.user == current_user %>
+              <%#= render '' %>
+              <%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger" %>
+            <% end %>
+          </div>
         </div>
         <div>
           <div>
