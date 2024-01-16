@@ -7,7 +7,7 @@ class Users::GenresController < ApplicationController
 
   def show
   end
-  
+
   private
 
   def post_params

@@ -1,7 +1,7 @@
 <!--管理者用コメント詳細閲覧-->
 <div class="container-fluid">
-  <div class="row flex-column m-5 p-5">
-    <div class="col bg-white mx-auto p-5">
+  <div class="row m-5 p-5">
+    <div class="col rounded bg-white mx-auto p-5">
       <h2>投稿した会員</h2>
       <div class="text-center my-5">
         <%= image_tag @comment.user.get_image, size: "200x200" %>
@@ -39,21 +39,26 @@
       </div>
     </div>
     <div class="col-8 mx-auto">
-      <div class="rounded bg-white m-5 p-5">
+      <div class="rounded bg-white mx-5 p-5">
         <h2>コメント</h2>
         <h4><%= @comment.comment_body %></h4>
         <p><%= @comment.post.title %></p>
         <p><%= @comment.created_at.strftime('%Y/%m/%d') %></p>
-        <%= link_to "削除する", admins_comments_destroy_path(comment.post, comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}  %>
+        <%= link_to "削除する", admins_comments_destroy_path(@comment.post, @comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}  %>
       </div>
       <div class="rounded bg-white m-5 p-5">
-        <h2>該当会員が過去に投稿したコメント</h2>
-        <% @comments.each do |comment| %>
-          <div class="rounded bg-white my-3 p-2">
-            <h4><%= comment.comment_body %></h4>
-            <p><%= comment.created_at.strftime('%Y/%m/%d') %></p>
-            <%= link_to "削除する", admins_comments_destroy_path(comment.post, comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}  %>
-          </div>
+        <h2>過去に投稿したコメント</h2>
+        <% if @comments %>
+          <% @comments.each do |comment| %>
+            <div class="rounded bg-light my-3 p-2">
+              <h4><%= comment.comment_body %></h4>
+              <p><%= comment.created_at.strftime('%Y/%m/%d') %></p>
+              <p><%= link_to comment.post.title, admins_posts_show_path(comment) %></p>
+              <%= link_to "削除する", admins_comments_destroy_path(comment.post, comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}  %>
+            </div>
+          <% end %>
+        <% else %>
+        <p>上記以外のコメントはありません。</p>
         <% end %>
       </div>
     </div>

@@ -1,49 +1,52 @@
 <!--管理者用Top画面-->
 <div class="container-fluid">
-  <div class="row flex-column m-5 p-5">
-    <div class="col-1 rounded bg-white m-5 py-5">
+  <div class="row">
+    <%= flash[:notice] %>
+    <div class="col-1 rounded bg-white my-5 ml-5 py-5">
       <!--言語一覧-->
       <%= render '/admins/genres/info' %>
     </div>
-    <div class="col rounded bg-white my-5 p-5">
+    <div class="col rounded bg-white m-5 p-5">
       <h3>新着記事</h3>
       <% if @posts %>
         <% @posts.each do |post| %>
-        <table>
-          <tr>
+          <div class="rounded bg-light my-3 p-2">
             <h5><%= link_to post.main_code, admins_posts_show_path(post) %></h5>
             <p><%= post.title %></p>
-          </tr>
-        </table>
+          </div>
         <% end %>
       <% else %>
         <p>最近投稿された記事はありません。</p>
       <% end %>
     </div>
-    <div class="col rounded bg-white m-5 p-5">
-      <h3>コメント一覧</h3>
+    <div class="col rounded bg-white my-5 p-5">
+      <h3>新着コメント一覧</h3>
       <% if @comments %>
         <% @comments.each do |comment| %>
-        <table>
-          <tr>
+          <div class="rounded bg-light my-3 p-2">
             <h5><%= link_to comment.comment_body, admins_comments_show_path(comment) %></h5>
-            <p><%= link_to "削除", admins_comments_destroy_path, data: {confirm: "本当に削除しますか？"} %></p>
-          </tr>
-        </table>
+            <p>
+              <%= image_tag comment.user.get_image, size: "30x30" %>
+              <%= comment.user.account_name %>
+            </p>
+            <p>
+              <%= comment.post.title %>
+            </p>
+              <%= link_to "削除", admins_comments_destroy_path, method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
+          </div>
         <% end %>
       <% else %>
         <p>現在、コメントはありません。</p>
       <% end %>
     </div>
-    <div class="col-2 rounded bg-white my-5 mr-5 p-5">
+    <div class="col-2 rounded bg-white m-5 p-5">
       <h3>会員一覧</h3>
       <% if @users %>
         <% @users.each do |user| %>
-          <table>
-            <tr>
-              <td><%= link_to user.account_name, admins_users_show_path(user) %></td>
-            </tr>
-          </table>
+          <div class="rounded bg-light my-3 p-2">
+            <%= image_tag user.get_image, size: "30x30" %>
+            <%= link_to user.account_name, admins_users_show_path(user) %>
+          </div>
         <% end %>
       <% else %>
         <p>現在、登録された会員はいません。</p>
