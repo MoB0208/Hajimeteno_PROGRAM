@@ -1,11 +1,24 @@
 <!--管理者用検索結果-->
-<% if @model == 'post' %>
-	<h3><%= @content %>の検索結果</h3>
-	<p><%= @records.count %>件</p>
-  <%= render 'post/index', posts: @records %>
-
-<% elsif @model == 'post_code' %>
-	<h3><%= @content %>の検索結果</h3>
-	<p><%= @records.count %>件</p>
-  <%= render 'post/code', post_codes: @records %>
-<% end %>
+<div class="container-fluid">
+  <div class="row flex-column m-5 p-5">
+    <div class="col-8 rounded bg-white mx-auto p-5">
+      <% if @model == 'post' %>
+        <h3><%= @content %>の検索結果</h3>
+        <p><%= @records.count %>件</p>
+        <%= render '/admins/posts/index', post: @records %>
+      <% elsif @model == 'content' %>
+        <h3><%= @content %>の検索結果</h3>
+        <p><%= @records.count %>件</p>
+        <%= render '/admins/posts/index', post: @records %>
+      <% elsif @model == 'main_text' %>
+        <h3><%= @content %>の検索結果</h3>
+        <p><%= @records.count %>件</p>
+        <%= render '/admins/posts/index', post: @records %>
+      <% else @model == 'post_code' %>
+        <h3><%= @content %>の検索結果</h3>
+        <p><%= @records.count %>件</p>
+        <%= render '/admins/posts/index', post: @records %>
+      <% end %>
+    </div>
+  </div>
+</div>

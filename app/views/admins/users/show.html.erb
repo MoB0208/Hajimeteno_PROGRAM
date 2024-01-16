@@ -1,45 +1,47 @@
 <!--管理者用会員情報詳細閲覧-->
 <div class="container-fluid">
   <div class="row my-5 p-5">
-    <div class="col-8 rounded bg-white mx-auto p-5">
-      <h3>会員情報</h3>
-      <div class="mt-3">
-        <%= flash[:notice] %>
-        <div class="text-center my-5">
-          <%= image_tag @user.image, size: "200x200" %>
+    <div class="col-3 rounded bg-white p-5">
+      <h2>会員情報</h2>
+      <!--会員情報詳細閲覧-->
+      <%= render 'info', user: @user %>
+    </div>
+    <div class="col rounded bg-white mx-5 p-5">
+      <h2>投稿したコメント</h2>
+      <% if @user_comments %>
+        <% @user_comments.each do |comment| %>
+          <div class="rounded bg-light my-3 p-2">
+            <h4><%= link_to comment.comment_body, admins_comments_show_path(comment) %></h4>
+            <p><%= comment.created_at.strftime('%Y/%m/%d') %></p>
+            <div class="text-right">
+              <%= link_to "削除する", admins_comments_destroy_path(comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <div>
+          <p>投稿した記事はありません。</p>
         </div>
-        <table class="table table-bordered mt-3">
-          <colgroup>
-            <col class="col-md-2">
-            <col class="col-md-3">
-          </colgroup>
-          <tr>
-            <td class="text-white" style="background-color: #7868C4;">アカウント名</td>
-            <td><%= @user.account_name %></td>
-          </tr>
-          <tr>
-            <td class="text-white" style="background-color: #7868C4;">生年月日</td>
-            <td><%= @user.birthdate %></td>
-          </tr>
-          <tr>
-            <td class="text-white" style="background-color: #7868C4;">メールアドレス</td>
-            <td><%= @user.email %></td>
-          </tr>
-          <tr>
-            <td class="text-white" style="background-color: #7868C4;">ステータス</td>
-            <td>
-              <% if @user.status %>
-                <span>有効</span>
-              <% else %>
-                <span>利用停止</span>
-              <% end %>
-            </td>
-          </tr>
-        </table>
-      </div>
-      <div class="text-center">
-        <%= link_to "ステータスを編集する", admins_users_edit_path(@user), class: "btn btn-success text-white edit_user_#{@user.id}" %>
-      </div>
+      <% end %>
+    </div>
+    <div class="col rounded bg-white mx-5 p-5">
+      <h2>投稿した記事</h2>
+      <% if @user_posts %>
+        <% @user_posts.each do |post| %>
+          <div class="rounded bg-light my-3 p-2">
+            <h4><%= link_to post.main_code, admins_posts_show_path(post) %></h4>
+            <p><%= post.title %></p>
+            <p><%= post.created_at.strftime('%Y/%m/%d') %></p>
+            <div class="text-right">
+              <%= link_to "削除する", post_path(post), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <div>
+          <p>投稿した記事はありません。</p>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

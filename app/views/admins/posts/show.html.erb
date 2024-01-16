@@ -1,2 +1,54 @@
-<h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<!--管理者用記事の詳細閲覧-->
+<div class="container-fluid">
+  <div class="row flex-column m-5 p-5">
+    <div class="col-8 rounded bg-white mx-auto p-5">
+      <div>
+        <!--記事-->
+        <div>
+          <h3><%= @post.title %></h3>
+        </div>
+        <div>
+          <h5><%= @post.main_code %></h5>
+        </div>
+        <div>
+          <% @post.genres.each do |genre| %>
+            <%= t(".genre_name", default: genre.genre_name_i18n) %>
+            <%= genre.version %>
+          <% end %>
+        </div>
+        <div>
+          <%= @post.created_at.strftime('%Y/%m/%d') %>
+          <div>
+            <%= link_to "削除する", admins_posts_destroy_path(@post), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
+          </div>
+        </div>
+        <div>
+          <div>
+            <% @post.contents.each do |content| %>
+              <%= content.table_of_content %>
+            <% end %>
+          </div>
+          <div>
+            <% @post.main_texts.each do |main_text| %>
+              <%= main_text.body %>
+            <% end %>
+          </div>
+          <div class="flex-column bg-dark text-white">
+            <%= @post.post_codes.each do |post_code| %>
+              <div>
+                <p class="rounded-bottom bg-info text-white">
+                  <%= post_code.position %>
+                </p>
+              </div>
+              <div><%= post_code.code %></div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div>
+        <!--記事コメント閲覧-->
+        <%= render '/admins/comments/info', post: @post %>
+      </div>
+    </div>
+  </div>
+</div>

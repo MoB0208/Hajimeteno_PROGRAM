@@ -1,2 +1,61 @@
-<h1>Admin::Comments#show</h1>
-<p>Find me in app/views/admin/comments/show.html.erb</p>
+<!--管理者用コメント詳細閲覧-->
+<div class="container-fluid">
+  <div class="row flex-column m-5 p-5">
+    <div class="col bg-white mx-auto p-5">
+      <h2>投稿した会員</h2>
+      <div class="text-center my-5">
+        <%= image_tag @comment.user.get_image, size: "200x200" %>
+      </div>
+      <table class="table table-bordered mt-3">
+        <colgroup>
+          <col class="col-md-3">
+          <col class="col-md-3">
+        </colgroup>
+        <tr>
+          <td class="text-white" style="background-color: #7868C4;">アカウント名</td>
+          <td><%= @comment.user.account_name %></td>
+        </tr>
+        <tr>
+          <td class="text-white" style="background-color: #7868C4;">生年月日</td>
+          <td><%= @comment.user.birthdate %></td>
+        </tr>
+        <tr>
+          <td class="text-white" style="background-color: #7868C4;">メールアドレス</td>
+          <td><%= @comment.user.email %></td>
+        </tr>
+        <tr>
+          <td class="text-white" style="background-color: #7868C4;">ステータス</td>
+          <td>
+            <% if @comment.user.status %>
+              <span>有効</span>
+            <% else %>
+              <span>利用停止</span>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <div class="text-center">
+        <%= link_to "ステータスを編集する", admins_users_edit_path(@comment.user), class: "btn btn-success text-white edit_user_#{@comment.user.id}" %>
+      </div>
+    </div>
+    <div class="col-8 mx-auto">
+      <div class="rounded bg-white m-5 p-5">
+        <h2>コメント</h2>
+        <h4><%= @comment.comment_body %></h4>
+        <p><%= @comment.post.title %></p>
+        <p><%= @comment.created_at.strftime('%Y/%m/%d') %></p>
+        <%= link_to "削除する", admins_comments_destroy_path(comment.post, comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}  %>
+      </div>
+      <div class="rounded bg-white m-5 p-5">
+        <h2>該当会員が過去に投稿したコメント</h2>
+        <% @comments.each do |comment| %>
+          <div class="rounded bg-white my-3 p-2">
+            <h4><%= comment.comment_body %></h4>
+            <p><%= comment.created_at.strftime('%Y/%m/%d') %></p>
+            <%= link_to "削除する", admins_comments_destroy_path(comment.post, comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}  %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

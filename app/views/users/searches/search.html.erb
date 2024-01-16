@@ -14,7 +14,7 @@
         <h3><%= @content %>の検索結果</h3>
         <p><%= @records.count %>件</p>
         <%= render '/users/posts/index', post: @records %>
-      <% elsif @model == 'post_code' %>
+      <% else @model == 'post_code' %>
         <h3><%= @content %>の検索結果</h3>
         <p><%= @records.count %>件</p>
         <%= render '/users/posts/index', post: @records %>

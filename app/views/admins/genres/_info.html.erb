@@ -4,7 +4,7 @@
   <% Genre.genre_names_i18n.keys.map.each do |genre_name| %>
     <table>
       <tr>
-        <%= link_to I18n.t("enums.genre.genre_name.#{genre_name}"), admins_root_path %>
+        <%= link_to I18n.t("enums.genre.genre_name.#{genre_name}"), admins_genres_show_path(ganre_name) %>
       </tr>
     </table>
   <% end %>

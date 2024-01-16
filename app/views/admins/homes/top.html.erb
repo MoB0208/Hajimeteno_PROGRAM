@@ -1,6 +1,6 @@
 <!--管理者用Top画面-->
 <div class="container-fluid">
-  <div class="row">
+  <div class="row flex-column m-5 p-5">
     <div class="col-1 rounded bg-white m-5 py-5">
       <!--言語一覧-->
       <%= render '/admins/genres/info' %>
@@ -17,7 +17,7 @@
         </table>
         <% end %>
       <% else %>
-        <p>最近投稿された記事はありません</p>
+        <p>最近投稿された記事はありません。</p>
       <% end %>
     </div>
     <div class="col rounded bg-white m-5 p-5">
@@ -27,12 +27,12 @@
         <table>
           <tr>
             <h5><%= link_to comment.comment_body, admins_comments_show_path(comment) %></h5>
-            <p><%= link_to "削除", admins_comments_destroy_path %></p>
+            <p><%= link_to "削除", admins_comments_destroy_path, data: {confirm: "本当に削除しますか？"} %></p>
           </tr>
         </table>
         <% end %>
       <% else %>
-        <p>現在、コメントはありません</p>
+        <p>現在、コメントはありません。</p>
       <% end %>
     </div>
     <div class="col-2 rounded bg-white my-5 mr-5 p-5">
@@ -46,7 +46,7 @@
           </table>
         <% end %>
       <% else %>
-        <p>現在、登録された会員はいません</p>
+        <p>現在、登録された会員はいません。</p>
       <% end %>
     </div>
   </div>
