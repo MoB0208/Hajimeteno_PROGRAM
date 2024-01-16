@@ -1,6 +1,8 @@
 <!--お気に入り登録用-->
 <% if post.user == current_user %>
   <p>♡<%= post.favorites.count %></p>
+<% elsif current_user.nil? %>
+  <p>♡<%= post.favorites.count %></p>
 <% elsif post.favorited_by?(current_user) %>
   <p>
     <%= link_to favorite_path(post), method: :delete do %>
