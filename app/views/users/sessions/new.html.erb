@@ -3,7 +3,7 @@
   <div class="row flex-column m-5 p-5">
     <div class="col-8 rounded bg-white mx-auto p-5">
       <h3>ログイン</h3>
-      <div class="m-5 bg-info">
+      <div class="m-5">
         <h5>会員の方はこちらからログイン</h5>
         <div class="center-block mx-auto">
           <%= form_with model: @user, url: new_user_session_path, local: true do |f| %>
@@ -32,9 +32,11 @@
           <% end %>
           </div>
         </div>
-        <div class="row flex-column pt-5">
-          <h5>会員登録がお済みでない方</h5>
-          <div class="mx-5 px-auto bg-success">
+        <div class="flex-column pt-5">
+          <div>
+            <h5>会員登録がお済みでない方</h5>
+          </div>
+          <div class="mx-5 my-3 px-auto">
             <p><%= link_to "こちら", new_user_registration_path %>から新規登録を行ってください。</p>
           </div>
         </div>
