@@ -5,13 +5,13 @@ class Content < ApplicationRecord
 
   def self.search_for(content, method)
     if method == 'perfect'
-      PostCode.where(table_of_content: content)
+      Content.where(table_of_content: content)
     elsif method == 'forward'
-      PostCode.where('table_of_content LIKE ?', content+'%')
+      Content.where('table_of_content LIKE ?', content+'%')
     elsif method == 'backward'
-      PostCode.where('table_of_content LIKE ?', '%'+content)
+      Content.where('table_of_content LIKE ?', '%'+content)
     else
-      PostCode.where('table_of_content LIKE ?', '%'+content+'%')
+      Content.where('table_of_content LIKE ?', '%'+content+'%')
     end
   end
 end

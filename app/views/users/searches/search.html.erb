@@ -2,22 +2,26 @@
 <div class="container-fluid">
   <div class="row flex-column m-5 p-5">
     <div class="col-8 rounded bg-white mx-auto p-5">
-      <% if @model == 'post' %>
+      <% if @model == 'Post' %>
+        <!--model:Postの検索結果一覧-->
         <h3><%= @content %>の検索結果</h3>
         <p><%= @records.count %>件</p>
-        <%= render '/users/posts/index', post: @records %>
-      <% elsif @model == 'content' %>
+        <%= render '/users/posts/info_post', post: @records %>
+      <% elsif @model == 'Content' %>
+        <!--model:Contentの検索結果一覧-->
         <h3><%= @content %>の検索結果</h3>
         <p><%= @records.count %>件</p>
-        <%= render '/users/posts/index', post: @records %>
-      <% elsif @model == 'main_text' %>
+        <%= render '/users/posts/info_content', content: @records %>
+      <% elsif @model == 'MainText' %>
+        <!--model:MainTextの検索結果一覧-->
         <h3><%= @content %>の検索結果</h3>
         <p><%= @records.count %>件</p>
-        <%= render '/users/posts/index', post: @records %>
-      <% else @model == 'post_code' %>
+        <%= render '/users/posts/info_main_text', main_text: @records %>
+      <% else @model == 'PostCode' %>
+        <!--model:PostCodeの検索結果一覧-->
         <h3><%= @content %>の検索結果</h3>
         <p><%= @records.count %>件</p>
-        <%= render '/users/posts/index', post: @records %>
+        <%= render '/users/posts/info_post_code', post_code: @records %>
       <% end %>
     </div>
   </div>

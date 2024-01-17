@@ -59,17 +59,16 @@ Rails.application.routes.draw do
     # get '/genres/:id', to: 'genres#show', as: 'genres_show'
 
     # 投稿関連
-    # コメント関連
+
     resources :posts, only: [:new, :create, :edit, :update, :index, :show, :destroy] do
+      # お気に入り
+      resource :favorites, only: [:create, :destroy, :index]
+      # コメント関連
       resources :comments, only: [:create, :edit, :update, :destroy]
     end
 
     # 検索
     get "search" => 'searches#search'
     get '/searches', to: 'searches#index', as: 'searches_index'
-
-    # お気に入り
-    resources :favorites, only: [:create, :destroy, :index]
-
   end
 end

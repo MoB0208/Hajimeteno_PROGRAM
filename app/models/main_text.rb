@@ -5,13 +5,13 @@ class MainText < ApplicationRecord
 
   def self.search_for(content, method)
     if method == 'perfect'
-      PostCode.where(body: content)
+      MainText.where(body: content)
     elsif method == 'forward'
-      PostCode.where('body LIKE ?', content+'%')
+      MainText.where('body LIKE ?', content+'%')
     elsif method == 'backward'
-      PostCode.where('body LIKE ?', '%'+content)
+      MainText.where('body LIKE ?', '%'+content)
     else
-      PostCode.where('body LIKE ?', '%'+content+'%')
+      MainText.where('body LIKE ?', '%'+content+'%')
     end
   end
 end
