@@ -1,8 +1,8 @@
 <!--管理者用記事の詳細閲覧-->
 <div class="container-fluid">
   <div class="row flex-column m-5 p-5">
-    <div class="col-8 rounded bg-white mx-auto p-5">
-      <div>
+    <div class="col-8 mx-auto p-5">
+      <div class="rounded bg-white mx-auto p-5">
         <!--記事-->
         <div>
           <h3><%= @post.title %></h3>
@@ -45,7 +45,7 @@
           </div>
         </div>
       </div>
-      <div>
+      <div class="rounded bg-white mx-auto p-5">
         <!--記事コメント閲覧-->
         <%= render '/admins/comments/info', post: @post %>
       </div>
