@@ -1,14 +1,14 @@
 <!--model:Contentの検索結果一覧-->
 <% if content.npost %>
-  <% content.post.each do |post| %>
+  <% content.post.each do |content| %>
   <div class="col rounded bg-white my-5 p-5">
-    <h4><%= link_to post.main_code, post_path(post) %></h4>
-    <p><%= post.title %></p>
+    <h4><%= link_to content.post.main_code, post_path(content.post) %></h4>
+    <p><%= content.post.title %></p>
     <p>
-      <%= image_tag post.user.get_image, size: "30x30" %>
-      <%= post.user.account_name %>
-      <%= post.created_at.strftime('%Y/%m/%d') %>
-      <%= render '/users/favorites/form', post: post %>
+      <%= image_tag content.post.user.get_image, size: "30x30" %>
+      <%= content.post.user.account_name %>
+      <%= content.post.created_at.strftime('%Y/%m/%d') %>
+      <%#= render '/users/favorites/form', post: post %>
     </p>
   </div>
   <% end %>

@@ -6,6 +6,7 @@ class Users::GenresController < ApplicationController
   end
 
   def show
+    @posts = Post.find(genre)
   end
 
   private

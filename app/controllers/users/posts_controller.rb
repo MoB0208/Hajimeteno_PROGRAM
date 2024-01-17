@@ -37,13 +37,14 @@ class Users::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @genre = @post.genres.find(
-      genre_name: params[:post][:genre][:genre_name],
-      version: params[:post][:genre][:version],
-    )
-    @content = @post.contents
-    @main_text = @post.main_texts
-    @post_code = @post.post_codes
+    # @genre = @post.genres
+    # # .find(
+    # #   genre_name: params[:post][:genre][:genre_name],
+    # #   version: params[:post][:genre][:version],
+    # # )
+    # @content = @post.contents
+    # @main_text = @post.main_texts
+    # @post_code = @post.post_codes
   end
 
   def update
