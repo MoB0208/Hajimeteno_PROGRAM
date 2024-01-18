@@ -13,7 +13,9 @@
         </div>
         <div>
           <% @post.genres.each do |genre| %>
-            <%= t(".genre_name", default: genre.genre_name_i18n) %>
+            <span class="rounded bg-secondary text-white">
+              <%= t(".genre_name", default: genre.genre_name_i18n) %>
+            </span>
             <%= genre.version %>
           <% end %>
         </div>
@@ -26,15 +28,18 @@
           <div>
             <!--記事編集-->
             <% if @post.user == current_user %>
-              <%= link_to "編集する", edit_post_path(@post), class: "btn btn-success" %>
-              <%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
+              <div class="text-right">
+                <%= link_to "編集する", edit_post_path(@post), class: "btn btn-success" %>
+                <%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
+              </div>
+
             <% end %>
           </div>
         </div>
         <div>
           <div>
             <% @post.contents.each do |content| %>
-              <%= content.table_of_content %>
+              <h3><%= content.table_of_content %></h3>
             <% end %>
           </div>
           <div>
@@ -42,14 +47,14 @@
               <%= main_text.body %>
             <% end %>
           </div>
-          <div class="flex-column bg-dark text-white">
+          <div class="flex-column rounded bg-dark text-white">
             <%= @post.post_codes.each do |post_code| %>
-              <div>
-                <p class="rounded-bottom bg-info text-white">
+              <div class="px-2">
+                <span class="rounded-bottom bg-info text-white">
                   <%= post_code.position %>
-                </p>
+                </span>
+                <div><%= post_code.code %></div>
               </div>
-              <div><%= post_code.code %></div>
             <% end %>
           </div>
         </div>
@@ -73,6 +78,5 @@
         <h3>別言語の関連記事</h3>
       </div>
     </div>
-
   </div>
 </div>
