@@ -37,22 +37,36 @@ class Users::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    # @genre = @post.genres
+    @genre = @post.genres
     # # .find(
     # #   genre_name: params[:post][:genre][:genre_name],
     # #   version: params[:post][:genre][:version],
     # # )
-    # @content = @post.contents
+    @content = @post.contents
     # @main_text = @post.main_texts
     # @post_code = @post.post_codes
   end
 
   def update
     @post = Post.find(params[:id])
+    @genre = @post.genres.build(
+      genre_name: params[:post][:genre][:genre_name],
+      version: params[:post][:genre][:version],
+    )
+    @content = @post.contents.build(
+      table_of_content: params[:post][:content][:table_of_content],
+    )
+    @main_text = @post.main_texts.build(
+      body: params[:post][:main_text][:body],
+    )
+    @post_code = @post.post_codes.build(
+      position: params[:post][:post_code][:position],
+      code: params[:post][:post_code][:code],
+    )
     if @post.update(post_params)
-      redirect_to home_path, notice: "投稿を修正しました。"
+      redirect_to home_path, notice: "記事を修正しました。"
     else
-      render :edit
+      render :edit, notice: "記事の保存に失敗しました。"
     end
   end
 
@@ -73,7 +87,7 @@ class Users::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to home_path, notice: "投稿を削除しました。"
+    redirect_to home_path, notice: "記事を削除しました。"
   end
 
   private

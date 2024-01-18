@@ -1,7 +1,14 @@
 <!--目次記入用-->
 <%= f.fields_for :content do |content| %>
-  <div class="form-group">
-    <%= content.label :table_of_content, "目次" %>
-    <%= content.text_area :table_of_content, class: 'form-control body', placeholder:"目次（章タイトル）を記入してください。" %>
-  </div>
+  <% if @post.new_record? %>
+    <div class="form-group">
+      <%= content.label :table_of_content, "目次" %>
+      <%= content.text_area :table_of_content, class: 'form-control body', placeholder:"目次（章タイトル）を記入してください。" %>
+    </div>
+  <% else %>
+    <div class="form-group">
+      <%= content.label :table_of_content, "目次" %>
+      <%= content.text_area :table_of_content, value: @content.first.table_of_content, class: 'form-control body', placeholder:"目次（章タイトル）を記入してください。" %>
+    </div>
+  <% end %>
 <% end %>

@@ -1,5 +1,7 @@
 <!--言語一覧選択用-->
 <%= f.fields_for :genre do |genre| %>
+
+<%= genre.collection_radio_buttons(:genre_name, Genre.genre_names_i18n, :first , :last, {checked: @genre.first.genre_name}) %>
   <div class="form-group">
     <p>言語</p>
     &emsp;<%= genre.radio_button :genre_name, Genre.genre_names.key(0) %>
@@ -79,3 +81,4 @@
     <%= genre.text_area :version, class: 'form-control version', placeholder:"バージョンを記入してください。" %>
   </div>
 <% end %>
+
