@@ -4,6 +4,7 @@
     <div class="col-2"></div>
     <div class="col-7">
       <div class="rounded bg-white mx-auto p-5">
+        <%= flash[:notice] %>
         <!--記事-->
         <div>
           <h3><%= @post.title %></h3>

@@ -7,7 +7,7 @@
     <div class="rounded bg-light my-3 p-2">
       <p>
         <%= comment.comment_body %>
-        <%= link_to "削除する", admins_comment_path(comment.post, comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}  %>
+        <%= link_to "削除する", admins_post_comment_path(comment.post, comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}  %>
       </p>
       <p>
         <%= image_tag comment.user.get_image, size: "30x30" %>

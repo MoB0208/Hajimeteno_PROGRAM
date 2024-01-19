@@ -30,16 +30,17 @@ Rails.application.routes.draw do
     # get '/genres/:id', to: 'genres#show', as: 'genres_show'
 
     # 投稿関連
-    resources :posts, only: [:index, :show, :destroy]
+    resources :posts, only: [:index, :show, :destroy] do
     # get '/posts', to: 'posts#index', as: 'posts_index'
     # get '/posts/:id', to: 'posts#show', as: 'posts_show'
     # delete 'posts/destroy'
 
-    # コメント関連
-    resources :comments, only: [:index, :show, :destroy]
-    # get '/comments', to: 'comments#index', as: 'comments_index'
-    # get '/comments/:id', to: 'comments#show', as: 'comments_show'
-    # delete 'comments/destroy'
+      # コメント関連
+      resources :comments, only: [:index, :show, :destroy]
+      # get '/comments', to: 'comments#index', as: 'comments_index'
+      # get '/comments/:id', to: 'comments#show', as: 'comments_show'
+      # delete 'comments/destroy'
+  end
 
     # 検索
     get "/search" => 'searches#search'

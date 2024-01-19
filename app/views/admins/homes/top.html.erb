@@ -24,13 +24,13 @@
       <% if @comments %>
         <% @comments.each do |comment| %>
           <div class="rounded bg-light my-3 p-2">
-            <h5><%= link_to comment.comment_body, admins_comment_path(comment) %></h5>
+            <h5><%= link_to comment.comment_body, admins_post_comment_path(comment.post, comment) %></h5>
             <p>
               <%= image_tag comment.user.get_image, size: "30x30" %>
               <%= comment.user.account_name %>
             </p>
             <p><%= comment.post.title %></p>
-              <%= link_to "削除", admins_comment_path(comment.post, comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
+              <%= link_to "削除", admins_post_comment_path(comment.post, comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
           </div>
         <% end %>
       <% else %>

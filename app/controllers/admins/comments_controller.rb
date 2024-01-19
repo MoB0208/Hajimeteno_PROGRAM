@@ -11,7 +11,7 @@ class Admins::CommentsController < ApplicationController
 
   def destroy
     Comment.find(params[:id]).destroy
-    redirect_to admins_root_path, notice: "投稿を削除しました。"
+    redirect_to admins_root_path, notice: "コメントを削除しました。"
   end
 
   private

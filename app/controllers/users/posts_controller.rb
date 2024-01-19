@@ -61,7 +61,7 @@ class Users::PostsController < ApplicationController
          position: params[:post][:post_code][:position],
          code: params[:post][:post_code][:code],
        )
-      redirect_to home_path, notice: "記事を修正しました。"
+      redirect_to post_path(@post), notice: "記事を修正しました。"
     else
       render :edit, notice: "記事の保存に失敗しました。"
     end
