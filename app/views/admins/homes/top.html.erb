@@ -13,6 +13,10 @@
           <div class="rounded bg-light my-3 p-2">
             <h5><%= link_to post.main_code, admins_post_path(post) %></h5>
             <p><%= post.title %></p>
+            <p>
+              <%= image_tag post.user.get_image, size: "30x30" %>
+              <%= post.user.account_name %>
+            </p>
           </div>
         <% end %>
       <% else %>

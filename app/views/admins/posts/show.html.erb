@@ -12,20 +12,24 @@
         </div>
         <div>
           <% @post.genres.each do |genre| %>
-            <%= t(".genre_name", default: genre.genre_name_i18n) %>
+            <span class="rounded bg-secondary text-white px-1">
+              <%= t(".genre_name", default: genre.genre_name_i18n) %>
+            </span>
             <%= genre.version %>
           <% end %>
         </div>
         <div>
+          <%= image_tag @post.user.get_image, size: "50x50" %>
+          <%= @post.user.account_name %>
           <%= @post.created_at.strftime('%Y/%m/%d') %>
-          <div>
+          <div class="text-right">
             <%= link_to "削除する", admins_post_path(@post), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
           </div>
         </div>
         <div>
           <div>
             <% @post.contents.each do |content| %>
-              <%= content.table_of_content %>
+              <h3><%= content.table_of_content %></h3>
             <% end %>
           </div>
           <div>
@@ -33,19 +37,19 @@
               <%= main_text.body %>
             <% end %>
           </div>
-          <div class="flex-column bg-dark text-white">
+          <div class="flex-column rounded bg-dark text-white">
             <%= @post.post_codes.each do |post_code| %>
-              <div>
-                <p class="rounded-bottom bg-info text-white">
+              <div class="px-2">
+                <span class="rounded-bottom bg-info text-white px-2">
                   <%= post_code.position %>
-                </p>
+                </span>
               </div>
               <div><%= post_code.code %></div>
             <% end %>
           </div>
         </div>
       </div>
-      <div class="rounded bg-white mx-auto p-5">
+      <div class="rounded bg-white my-5 p-5">
         <!--記事コメント閲覧-->
         <%= render '/admins/comments/info', post: @post %>
       </div>

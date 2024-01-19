@@ -1,11 +1,11 @@
 <!--model:PostCodeの検索結果一覧用-->
 <% if post_code %>
   <% post_code.each do |post_code| %>
-  <div class="col rounded bg-white my-5 p-5">
+  <div class="col rounded bg-light my-3 p-2">
     <h4><%= link_to post_code.post.main_code, post_path(post_code.post) %></h4>
     <p><%= post_code.post.title %></p>
     <p>
-      <%= image_tag post_code.post.user.get_image, size: "30x30" %>
+      <%= image_tag post_code.post.user.get_image, size: "50x50" %>
       <%= post_code.post.user.account_name %>
       <%= post_code.post.created_at.strftime('%Y/%m/%d') %>
       <%#= post_code.render '/users/favorites/form', post: post %>
