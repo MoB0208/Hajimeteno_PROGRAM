@@ -1,12 +1,12 @@
 <!--管理者用会員情報詳細閲覧-->
 <div class="container-fluid">
   <div class="row my-5 p-5">
-    <div class="col-3 rounded bg-white p-5">
+    <div class="col-3 rounded bg-white mr-5 p-5">
       <h2>会員情報</h2>
       <!--会員情報詳細閲覧-->
       <%= render 'info', user: @user %>
     </div>
-    <div class="col rounded bg-white mx-5 p-5">
+    <div class="col rounded bg-white p-5">
       <h2>投稿したコメント</h2>
       <% if @user_comments %>
         <% @user_comments.each do |comment| %>
@@ -24,7 +24,7 @@
         </div>
       <% end %>
     </div>
-    <div class="col rounded bg-white mx-5 p-5">
+    <div class="col rounded bg-white ml-5 p-5">
       <h2>投稿した記事</h2>
       <% if @user_posts %>
         <% @user_posts.each do |post| %>
