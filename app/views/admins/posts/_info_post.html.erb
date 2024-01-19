@@ -1,8 +1,8 @@
-<!--管理者用通常の記事一覧用-->
+<!--管理者用model:Postの検索結果一覧用-->
 <% if post %>
   <% post.each do |post| %>
   <div class="col rounded bg-white my-5 p-5">
-    <h4><%= link_to post.main_code, admins_posts_show_path(post) %></h4>
+    <h4><%= link_to post.main_code, admins_post_path(post) %></h4>
     <p><%= post.title %></p>
     <p>
       <%= image_tag post.user.get_image, size: "30x30" %>

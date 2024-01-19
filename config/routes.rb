@@ -18,24 +18,28 @@ Rails.application.routes.draw do
     root to: 'homes#top'
 
     # 会員一覧・管理関連
-    get '/users', to: 'users#index', as: 'users_index'
-    get '/users/:id', to: 'users#show', as: 'users_show'
-    get '/users/:id/edit', to: 'users#edit', as: 'users_edit'
-    patch 'users/:id/update', to: 'users#update', as: 'users_update'
+    resources :users, only: [:index, :show, :edit, :update]
+    # get '/users', to: 'users#index', as: 'users_index'
+    # get '/users/:id', to: 'users#show', as: 'users_show'
+    # get '/users/:id/edit', to: 'users#edit', as: 'users_edit'
+    # patch 'users/:id/update', to: 'users#update', as: 'users_update'
 
     # 言語一覧
-    get '/genres', to: 'genres#index', as: 'genres_index'
-    get '/genres/:id', to: 'genres#show', as: 'genres_show'
+    resources :genres, only: [:show]
+    # get '/genres', to: 'genres#index', as: 'genres_index'
+    # get '/genres/:id', to: 'genres#show', as: 'genres_show'
 
     # 投稿関連
-    get '/posts', to: 'posts#index', as: 'posts_index'
-    get '/posts/:id', to: 'posts#show', as: 'posts_show'
-    delete 'posts/destroy'
+    resources :posts, only: [:index, :show, :destroy]
+    # get '/posts', to: 'posts#index', as: 'posts_index'
+    # get '/posts/:id', to: 'posts#show', as: 'posts_show'
+    # delete 'posts/destroy'
 
     # コメント関連
-    get '/comments', to: 'comments#index', as: 'comments_index'
-    get '/comments/:id', to: 'comments#show', as: 'comments_show'
-    delete 'comments/destroy'
+    resources :comments, only: [:index, :show, :destroy]
+    # get '/comments', to: 'comments#index', as: 'comments_index'
+    # get '/comments/:id', to: 'comments#show', as: 'comments_show'
+    # delete 'comments/destroy'
 
     # 検索
     get "/search" => 'searches#search'
@@ -54,12 +58,9 @@ Rails.application.routes.draw do
     patch 'users/update'
 
     # 言語一覧
-    resources :genres, only: [:index, :show]
-    # get '/genres/:id', to: 'genres#index', as: 'genres_index'
-    # get '/genres/:id', to: 'genres#show', as: 'genres_show'
+    resources :genres, only: [:show]
 
     # 投稿関連
-
     resources :posts, only: [:new, :create, :edit, :update, :index, :show, :destroy] do
       # お気に入り
       resource :favorites, only: [:create, :destroy, :index]

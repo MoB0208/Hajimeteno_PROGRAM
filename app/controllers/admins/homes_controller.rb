@@ -4,9 +4,9 @@ class Admins::HomesController < ApplicationController
   def top
     @users = User.all
     @genres = Genre.all
+    # コメント新着20件
     @comments = Comment.order('id DESC').limit(20)
-    # 新着20件
+    # 記事新着20件
     @posts = Post.order('id DESC').limit(20)
-    # 新着20件
   end
 end

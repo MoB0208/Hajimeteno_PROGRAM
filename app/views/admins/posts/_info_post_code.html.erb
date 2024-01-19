@@ -1,14 +1,13 @@
-<!--model:PostCodeの検索結果一覧用-->
+<!--管理者用model:PostCodeの検索結果一覧用-->
 <% if post_code %>
   <% post_code.each do |post_code| %>
   <div class="col rounded bg-white my-5 p-5">
-    <h4><%= link_to post_code.post.main_code, post_path(post_code.post) %></h4>
+    <h4><%= link_to post_code.post.main_code, admins_post_path(post_code.post) %></h4>
     <p><%= post_code.post.title %></p>
     <p>
       <%= image_tag post_code.post.user.get_image, size: "30x30" %>
       <%= post_code.post.user.account_name %>
       <%= post_code.post.created_at.strftime('%Y/%m/%d') %>
-      <%#= post_code.render '/users/favorites/form', post: post %>
     </p>
   </div>
   <% end %>

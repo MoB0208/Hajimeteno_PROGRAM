@@ -16,9 +16,9 @@ class Admins::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to admins_users_show_path(@user), notice: "ステータスを更新しました。"
+      redirect_to admins_user_path(@user), notice: "ステータスを更新しました。"
     else
-      render admins_users_edit_path(@user)
+      render edit_admins_user_path(@user)
     end
   end
 

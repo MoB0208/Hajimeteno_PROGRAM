@@ -13,7 +13,7 @@
         </div>
         <div>
           <% @post.genres.each do |genre| %>
-            <span class="rounded bg-secondary text-white">
+            <span class="rounded bg-secondary text-white px-1">
               <%= t(".genre_name", default: genre.genre_name_i18n) %>
             </span>
             <%= genre.version %>
@@ -32,7 +32,6 @@
                 <%= link_to "編集する", edit_post_path(@post), class: "btn btn-success" %>
                 <%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
               </div>
-
             <% end %>
           </div>
         </div>
@@ -50,7 +49,7 @@
           <div class="flex-column rounded bg-dark text-white">
             <%= @post.post_codes.each do |post_code| %>
               <div class="px-2">
-                <span class="rounded-bottom bg-info text-white">
+                <span class="rounded-bottom bg-info text-white px-2">
                   <%= post_code.position %>
                 </span>
                 <div><%= post_code.code %></div>

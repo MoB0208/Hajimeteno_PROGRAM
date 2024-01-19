@@ -11,10 +11,10 @@
       <% if @user_comments %>
         <% @user_comments.each do |comment| %>
           <div class="rounded bg-light my-3 p-2">
-            <h4><%= link_to comment.comment_body, admins_comments_show_path(comment) %></h4>
+            <h4><%= link_to comment.comment_body, admins_comment_path(comment) %></h4>
             <p><%= comment.created_at.strftime('%Y/%m/%d') %></p>
             <div class="text-right">
-              <%= link_to "削除する", admins_comments_destroy_path(comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
+              <%= link_to "削除する", admins_comment_path(comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
             </div>
           </div>
         <% end %>
@@ -29,11 +29,11 @@
       <% if @user_posts %>
         <% @user_posts.each do |post| %>
           <div class="rounded bg-light my-3 p-2">
-            <h4><%= link_to post.main_code, admins_posts_show_path(post) %></h4>
+            <h4><%= link_to post.main_code, admins_post_path(post) %></h4>
             <p><%= post.title %></p>
             <p><%= post.created_at.strftime('%Y/%m/%d') %></p>
             <div class="text-right">
-              <%= link_to "削除する", post_path(post), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
+              <%= link_to "削除する", admins_post_path(post), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
             </div>
           </div>
         <% end %>

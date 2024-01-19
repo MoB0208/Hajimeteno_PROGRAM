@@ -8,7 +8,7 @@
       <p>
         <%= comment.comment_body %>
         <% if comment.user == current_user %>
-          <%= link_to "修正する", edit_post_comment_path(comment.post, comment), class: "btn btn-success" %>
+          <%#= link_to "修正する", edit_post_comment_path(comment.post, comment), class: "btn btn-success" %>
           <%= link_to "削除する", post_comment_path(comment.post, comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}  %>
         <% end %>
       </p>

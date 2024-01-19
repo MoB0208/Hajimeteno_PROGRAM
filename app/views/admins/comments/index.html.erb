@@ -5,13 +5,13 @@
       <% if @comments %>
         <% @comments.each do |comment| %>
           <div class="rounded bg-light my-3 p-2">
-            <h4><%= link_to comment.comment_body, admins_comments_show_path(comment) %></h4>
+            <h4><%= link_to comment.comment_body, admins_comment_path(comment) %></h4>
             <p>
               <%= image_tag comment.user.get_image, size: "30x30" %>
               <%= comment.user.account_name %>
               <%= comment.created_at.strftime('%Y/%m/%d') %>
             </p>
-            <%= link_to "削除する", admins_comments_destroy_path(comment.post, comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}  %>
+            <%= link_to "削除する", admins_comment_path(comment.post, comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}  %>
           </div>
         <% end %>
       <% else %>
