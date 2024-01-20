@@ -1,5 +1,5 @@
 <!--管理者用model:Postの検索結果一覧用-->
-<% if post %>
+<% if post.any? %>
   <% post.each do |post| %>
   <div class="col rounded bg-light my-3 p-2">
     <h4><%= link_to post.main_code, admins_post_path(post) %></h4>

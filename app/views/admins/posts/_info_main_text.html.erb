@@ -1,5 +1,5 @@
 <!--管理者用model:MainTextの検索結果一覧用-->
-<% if main_text %>
+<% if main_text.any? %>
   <% main_text.each do |main_text| %>
   <div class="col rounded bg-light my-3 p-2">
     <h4><%= link_to main_text.post.main_code, admins_post_path(main_text.post) %></h4>

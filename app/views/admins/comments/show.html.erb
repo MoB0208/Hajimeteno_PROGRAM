@@ -48,7 +48,7 @@
       </div>
       <div class="rounded bg-white m-5 p-5">
         <h2>過去に投稿したコメント</h2>
-        <% if @comments %>
+        <% if @comments.any? %>
           <% @comments.each do |comment| %>
             <div class="rounded bg-light my-3 p-2">
               <h4><%= comment.comment_body %></h4>

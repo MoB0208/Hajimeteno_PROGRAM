@@ -8,7 +8,7 @@
     </div>
     <div class="col rounded bg-white p-5">
       <h2>投稿したコメント</h2>
-      <% if @user_comments %>
+      <% if @user_comments.any? %>
         <% @user_comments.each do |comment| %>
           <div class="rounded bg-light my-3 p-2">
             <h4><%= link_to comment.comment_body, admins_post_comment_path(comment) %></h4>
@@ -26,7 +26,7 @@
     </div>
     <div class="col rounded bg-white ml-5 p-5">
       <h2>投稿した記事</h2>
-      <% if @user_posts %>
+      <% if @user_posts.any? %>
         <% @user_posts.each do |post| %>
           <div class="rounded bg-light my-3 p-2">
             <h4><%= link_to post.main_code, admins_post_path(post) %></h4>

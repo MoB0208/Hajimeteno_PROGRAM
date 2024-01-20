@@ -8,7 +8,7 @@
     </div>
     <div class="col rounded bg-white m-5 p-5">
       <h3>新着記事</h3>
-      <% if @posts %>
+      <% if @posts.any? %>
         <% @posts.each do |post| %>
           <div class="rounded bg-light my-3 p-2">
             <h5><%= link_to post.main_code, admins_post_path(post) %></h5>
@@ -25,7 +25,7 @@
     </div>
     <div class="col rounded bg-white my-5 p-5">
       <h3>新着コメント一覧</h3>
-      <% if @comments %>
+      <% if @comments.any? %>
         <% @comments.each do |comment| %>
           <div class="rounded bg-light my-3 p-2">
             <h5><%= link_to comment.comment_body, admins_post_comment_path(comment.post, comment) %></h5>
@@ -43,7 +43,7 @@
     </div>
     <div class="col-2 rounded bg-white m-5 p-5">
       <h3>会員一覧</h3>
-      <% if @users %>
+      <% if @users.any? %>
         <% @users.each do |user| %>
           <div class="rounded bg-light my-3 p-2">
             <%= image_tag user.get_image, size: "30x30" %>

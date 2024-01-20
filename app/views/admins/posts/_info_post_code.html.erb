@@ -1,5 +1,5 @@
 <!--管理者用model:PostCodeの検索結果一覧用-->
-<% if post_code %>
+<% if post_code.any? %>
   <% post_code.each do |post_code| %>
   <div class="col rounded bg-light my-3 p-2">
     <h4><%= link_to post_code.post.main_code, admins_post_path(post_code.post) %></h4>
