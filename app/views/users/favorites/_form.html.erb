@@ -1,18 +1,30 @@
 <!--お気に入り登録用-->
 <% if post.user == current_user %>
-  <p>♡<%= post.favorites.count %></p>
-<% elsif current_user.nil? %>
-  <p>♡<%= post.favorites.count %></p>
-<% elsif post.favorited_by?(current_user) %>
+  <!--自分の投稿した記事の時-->
   <p>
-    <%= link_to post_favorites_path(post), method: :delete do %>
-      ♥<%= post.favorites.count %>
+    <i class="fa-regular fa-heart"></i>
+    <%= post.favorites.count %>
+  </p>
+<% elsif current_user.nil? %>
+  <!--ログインていない人-->
+  <p>
+    <i class="fa-regular fa-heart"></i>
+    <%= post.favorites.count %>
+  </p>
+<% elsif post.favorited_by?(current_user) %>
+  <!--ログインしてる人がお気に入り登録した記事を見たとき-->
+  <p>
+    <%= link_to post_favorites_path(post), method: :delete, remote: true do %>
+      <i class="fa-solid fa-heart"></i>
+      <%= post.favorites.count %>
     <% end %>
   </p>
 <% else %>
+  <!--ログインしてる人がまだお気に入り登録していない記事を見たとき-->
   <p>
-    <%= link_to post_favorites_path(post), method: :post do %>
-      ♡<%= post.favorites.count %>
+    <%= link_to post_favorites_path(post), method: :post, remote: true do %>
+      <i class="fa-regular fa-heart"></i>
+      <%= post.favorites.count %>
     <% end %>
   </p>
 <% end %>

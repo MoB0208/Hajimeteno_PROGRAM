@@ -8,6 +8,7 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/7d381659ee.js" crossorigin="anonymous"></script>
   </head>
 
   <header>
@@ -21,32 +22,51 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <% if admin_signed_in? %>
+                <!--管理者用-->
                 <h2 class="text-white">管理者用</h2>
                 <li class="nav-item text-right">
                   <%= link_to "Topへ", admins_root_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item text-right">
-                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+                  <!--ログアウト-->
+                  <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link" do %>
+                    <i class="fa-solid fa-right-from-bracket">ログアウト</i>
+                  <% end %>
                 </li>
                 <li><%= render '/admins/searches/form' %></li>
 
               <% elsif user_signed_in? %>
+                <!--会員用-->
                 <li class="nav-item text-right">
-                  <%= link_to "ホームへ", home_path, class: "nav-link" %>
+                  <!--ホーム-->
+                  <%= link_to home_path, class: "nav-link" do %>
+                    <i class="fa-solid fa-house">ホーム</i>
+                  <% end %>
                 </li>
                 <li class="nav-item text-right">
-                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
+                  <!--ログアウト-->
+                  <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+                    <i class="fa-solid fa-right-from-bracket">ログアウト</i>
+                  <% end %>
                 </li>
                 <li><%= render '/users/searches/form' %></li>
 
               <% else %>
                 <li class="nav-item text-right">
-                  <%= link_to "新規会員登録", new_user_registration_path, class: "nav-link" %>
+                  <!--新規登録-->
+                  <%= link_to new_user_registration_path, class: "nav-link" do %>
+                    <i class="fa-solid fa-user-plus">新規登録</i>
+                  <% end %>
                 </li>
                 <li class="nav-item text-right">
-                  <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+                  <!--ログイン-->
+                  <%= link_to new_user_session_path, class: "nav-link" do %>
+                    <i class="fa-solid fa-right-to-bracket">ログイン</i>
+                  <% end %>
                 </li>
-                <li><%= render '/users/searches/form' %></li>
+                <li>
+                  <%= render '/users/searches/form' %>
+                </li>
               <% end %>
             </ul>
           </div>
