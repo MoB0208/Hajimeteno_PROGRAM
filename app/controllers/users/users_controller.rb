@@ -10,6 +10,7 @@ class Users::UsersController < ApplicationController
   def show
     @user = current_user
     @user_posts = current_user.posts.all
+    # @favorite_posts = favorites.posts.all
   end
 
   def edit
