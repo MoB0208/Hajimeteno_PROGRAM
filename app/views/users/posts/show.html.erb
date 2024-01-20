@@ -50,7 +50,7 @@
             <% end %>
           </div>
           <div class="flex-column rounded bg-dark text-white">
-            <%= @post.post_codes.each do |post_code| %>
+            <% @post.post_codes.each do |post_code| %>
               <div class="px-2">
                 <span class="rounded-bottom bg-info text-white px-2">
                   <%= post_code.position %>

@@ -9,8 +9,9 @@
     <div class="col mx-5">
       <div class="rounded bg-white p-5">
         <h2>あなたがお気に入りに登録した記事</h2>
-        <% if @favorite_posts %>
-          <% @favorite_posts.each do |post| %>
+        <% if @favorites %>
+          <% @favorites.each do |favorite| %>
+            <%- post = favorite.post %>
             <div class="rounded bg-light my-3 p-2">
               <h4><%= link_to post.main_code, post_path(post) %></h4>
               <p><%= post.title %></p>
