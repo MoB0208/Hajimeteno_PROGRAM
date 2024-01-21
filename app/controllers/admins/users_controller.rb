@@ -2,9 +2,6 @@ class Admins::UsersController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_user, only: [:show, :edit, :update]
 
-  def index
-  end
-
   def show
     @user = User.find(params[:id])
     @user_comments = @user.comments.all

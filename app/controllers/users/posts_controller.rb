@@ -28,7 +28,7 @@ class Users::PostsController < ApplicationController
     )
     @post.user_id = current_user.id
     if @post.save
-      redirect_to home_path, notice: "投稿しました。"
+      redirect_to post_path(@post), notice: "投稿しました。"
     else
       @posts = Post.all
       render :new
@@ -64,13 +64,6 @@ class Users::PostsController < ApplicationController
       redirect_to post_path(@post), notice: "記事を修正しました。"
     else
       render :edit, notice: "記事の保存に失敗しました。"
-    end
-  end
-
-  def index
-    if params[:genre_name]
-    else
-    @posts = Post.all
     end
   end
 

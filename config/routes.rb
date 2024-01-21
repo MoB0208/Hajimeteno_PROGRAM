@@ -18,33 +18,19 @@ Rails.application.routes.draw do
     root to: 'homes#top'
 
     # 会員一覧・管理関連
-    resources :users, only: [:index, :show, :edit, :update]
-    # get '/users', to: 'users#index', as: 'users_index'
-    # get '/users/:id', to: 'users#show', as: 'users_show'
-    # get '/users/:id/edit', to: 'users#edit', as: 'users_edit'
-    # patch 'users/:id/update', to: 'users#update', as: 'users_update'
+    resources :users, only: [:show, :edit, :update]
 
     # 言語一覧
     resources :genres, only: [:show]
-    # get '/genres', to: 'genres#index', as: 'genres_index'
-    # get '/genres/:id', to: 'genres#show', as: 'genres_show'
 
     # 投稿関連
     resources :posts, only: [:index, :show, :destroy] do
-    # get '/posts', to: 'posts#index', as: 'posts_index'
-    # get '/posts/:id', to: 'posts#show', as: 'posts_show'
-    # delete 'posts/destroy'
-
       # コメント関連
       resources :comments, only: [:index, :show, :destroy]
-      # get '/comments', to: 'comments#index', as: 'comments_index'
-      # get '/comments/:id', to: 'comments#show', as: 'comments_show'
-      # delete 'comments/destroy'
-  end
+    end
 
     # 検索
     get "/search" => 'searches#search'
-    get '/searches', to: 'searches#index', as: 'searches_index'
   end
 
 
@@ -62,15 +48,14 @@ Rails.application.routes.draw do
     resources :genres, only: [:show]
 
     # 投稿関連
-    resources :posts, only: [:new, :create, :edit, :update, :index, :show, :destroy] do
+    resources :posts, only: [:new, :create, :edit, :update, :show, :destroy] do
       # お気に入り
-      resource :favorites, only: [:create, :destroy, :index]
+      resource :favorites, only: [:create, :destroy]
       # コメント関連
       resources :comments, only: [:create, :edit, :update, :destroy]
     end
 
     # 検索
     get "search" => 'searches#search'
-    get '/searches', to: 'searches#index', as: 'searches_index'
   end
 end

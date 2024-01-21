@@ -15,7 +15,4 @@ class Admins::SearchesController < ApplicationController
       @records = MainText.search_for(@content, @method)
     end
   end
-
-  def index
-  end
 end
