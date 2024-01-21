@@ -7,18 +7,18 @@
   <% if @post.comments.any? %>
     <% @post.comments.each do |comment| %>
       <div class="rounded bg-light my-3 p-2">
-        <p>
-          <%= comment.comment_body %>
+        <p><%= comment.comment_body %></p>
           <% if comment.user == current_user %>
-            <%#= link_to "修正する", edit_post_comment_path(comment.post, comment), class: "btn btn-success" %>
-            <%= link_to "削除する", post_comment_path(comment.post, comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}  %>
+            <div class="text-right">
+              <%#= link_to "修正する", "/posts/#{@post.id}/comments/#{comment.id}/edit", method: :get, class: "btn btn-success", remote: true %>
+              <%= link_to "削除する", post_comment_path(comment.post, comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}  %>
+            </div>
           <% end %>
-        </p>
         <p>
           <%= image_tag comment.user.get_image, size: "30x30" %>
           <%= comment.user.account_name %>
+          <%= comment.created_at.strftime('%Y/%m/%d') %>
         </p>
-        <p><%= comment.created_at.strftime('%Y/%m/%d') %></p>
       </div>
     <% end %>
   <% else %>
@@ -27,11 +27,26 @@
     </div>
   <% end %>
 </div>
-<div>
-  <%= form_with model: [@post, @comment], url: post_comments_path(post), local:true do |f| %>
-    <div class="form-group text-center">
-      <%= f.text_area :comment_body, size: "100x3", placeholder: "コメントはこちら" %>
-      <%= f.submit "送信する", class: "btn btn-success" %>
+<% if user_signed_in? %>
+  <div>
+    <%= form_with model: [@post, @comment], url: post_comments_path(post), local:true do |f| %>
+      <div class="form-group text-center">
+        <%= f.text_area :comment_body, size: "100x3", placeholder: "コメントはこちら" %>
+        <%= f.submit "送信する", class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="text-center">
+    <p>
+      コメントはログイン後に利用できます。<br>
+      新規登録してもっと便利に！<br>
+      自分が勉強した内容を投稿できる。<br>
+      お気に入り登録して後で読み返せます。<br>
+    </p>
+    <div>
+      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success" %>
+      <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

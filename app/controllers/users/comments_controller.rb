@@ -10,8 +10,9 @@ class Users::CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find(params[:id])
-    # @post = Post.find_by(id: params[:id])
+    # @post = Post.find(params[:post_id])
+    # @comment = Comment.find(params[:id])
+    # @comment = Comment.find_by(id: params[:id])
   end
 
   def update
