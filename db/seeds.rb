@@ -9,3 +9,13 @@ Admin.create!(
    email: 'gaklgjairjga@admin',
    password: 'fnjdaskfhauue'
 )
+
+Grenre.create!(
+   [
+      {id: 1, genre: "Javascript"}
+      {id: 2, genre: "Java"}
+      {id: 3, genre: "PHP"}
+      {id: 4, genre: "C"}
+      {id: 5, genre: "C++"}
+   ]
+)

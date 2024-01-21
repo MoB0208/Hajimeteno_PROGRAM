@@ -1,18 +1,8 @@
 class Users::GenresController < ApplicationController
 
   def show
-    @posts = Post.find(genre)
-    @posts = Post.order(:main_code)
-    # @posts = Post.find(genre.genre_name)
-    # @genre_id = params[:genre_id]
-    # @posts = Post.where(genre_id: @genre_id)
-
-    # @genre = Genre.find_by(genre_name: params[:id]) # params[:id]はリクエストパラメータから取得した検索するgenre_nameの値です
-    # if @genre.present?
-    #   @posts = Post.joins(:genre).where(genres: { genre_name: genre.genre_name })
-    # else
-    #   @posts = []
-    # end
+    @posts = Post.where(genre_name: params[:id]).order(:main_code)
+    @genre = Genre.where(genre_name: params[:id]).first
   end
 
   private
