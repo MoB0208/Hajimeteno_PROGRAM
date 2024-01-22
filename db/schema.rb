@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_01_14_155757) do
+ActiveRecord::Schema.define(version: 2024_01_21_205522) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -72,10 +72,17 @@ ActiveRecord::Schema.define(version: 2024_01_14_155757) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "genre_posts", force: :cascade do |t|
+    t.integer "genre_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["genre_id"], name: "index_genre_posts_on_genre_id"
+    t.index ["post_id"], name: "index_genre_posts_on_post_id"
+  end
+
   create_table "genres", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "genre_name"
-    t.string "version"
+    t.string "genre_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -99,6 +106,7 @@ ActiveRecord::Schema.define(version: 2024_01_14_155757) do
     t.integer "user_id"
     t.string "title"
     t.string "main_code"
+    t.string "version"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -119,4 +127,6 @@ ActiveRecord::Schema.define(version: 2024_01_14_155757) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "genre_posts", "genres"
+  add_foreign_key "genre_posts", "posts"
 end

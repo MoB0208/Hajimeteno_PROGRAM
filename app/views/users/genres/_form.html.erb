@@ -4,21 +4,21 @@
     <!--記事投稿-->
     <div class="form-group">
       <p>言語</p>
-      <%= genre.collection_radio_buttons(:genre_name, Genre.genre_names_i18n, :first , :last) %>
-    </div>
-    <div class="form-group">
-      <%= genre.label :version, "バージョン" %>
-      <%= genre.text_area :version, class: 'form-control version', placeholder:"バージョンを記入してください。" %>
+      <div>
+        <% genre.each do |genre| %>
+          <%= genre.label :genre_name %>
+          <%= genre.radio_button :genre_name, class: 'form-control genre_name' %>
+          <%#= genre.collection_radio_buttons(:genre_name, Genre.genre_names_i18n, :first , :last) %>
+        <% end %>
+      </div>
     </div>
   <% else %>
     <!--記事編集-->
     <div class="form-group">
       <p>言語</p>
-      <%= genre.collection_radio_buttons(:genre_name, Genre.genre_names_i18n, :first , :last, {checked: @genre.first.genre_name}) %>
-    </div>
-    <div class="form-group">
-      <%= genre.label :version, "バージョン" %>
-      <%= genre.text_area :version, value: @genre.first.version, class: 'form-control version', placeholder:"バージョンを記入してください。" %>
+      <%= genre.label :genre_name %>
+      <%= genre.radio_button :genre_name, value: @genre.first.genre_name, class: 'form-control genre_name' %>
+      <%#= genre.collection_radio_buttons(:genre_name, Genre.genre_names_i18n, :first , :last, {checked: @genre.first.genre_name}) %>
     </div>
   <% end %>
 <% end %>

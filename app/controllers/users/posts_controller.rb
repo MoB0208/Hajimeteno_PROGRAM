@@ -14,7 +14,6 @@ class Users::PostsController < ApplicationController
     @post = Post.new(post_params)
     @genre = @post.genres.build(
       genre_name: params[:post][:genre][:genre_name],
-      version: params[:post][:genre][:version],
     )
     @content = @post.contents.build(
       table_of_content: params[:post][:content][:table_of_content],
@@ -49,7 +48,6 @@ class Users::PostsController < ApplicationController
     if @post.update(post_params)
        @genre = @post.genres.update(
          genre_name: params[:post][:genre][:genre_name],
-         version: params[:post][:genre][:version],
        )
        @content = @post.contents.update(
          table_of_content: params[:post][:content][:table_of_content],
@@ -83,6 +81,13 @@ class Users::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :main_code)
+    values = params.require(:post).permit(
+      :title, :main_code, :version,
+      genre_ids: []
+    )
+    if values[:genre_ids].nil?
+      values[:genre_ids] = []
+    end
+    return values
   end
 end

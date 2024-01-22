@@ -1,10 +1,12 @@
 <!--言語一覧検索用-->
 <div>
   <h2>言語一覧</h2>
-  <% Genre.genre_names_i18n.keys.map.each do |genre_name| %>
+  <%# Genre.genre_names_i18n.keys.map.each do |genre_name| %>
+  <% genres.each do |genre| %>
     <table>
       <tr>
-        <%= link_to I18n.t("enums.genre.genre_name.#{genre_name}"), genre_path(genre_name) %>
+        <%#= link_to I18n.t("enums.genre.genre_name.#{genre_name}"), genre_path(genre_name) %>
+        <%= link_to genre.genre_name, genre_path(genre) %>
       </tr>
     </table>
   <% end %>

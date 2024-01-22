@@ -2,7 +2,8 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :genres
+  has_many :genre_posts, dependent: :destroy
+  has_many :genres, through: :genre_posts
   has_many :post_codes, dependent: :destroy
   has_many :contents, dependent: :destroy
   has_many :main_texts, dependent: :destroy

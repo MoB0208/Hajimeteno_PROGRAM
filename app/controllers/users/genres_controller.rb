@@ -1,8 +1,8 @@
 class Users::GenresController < ApplicationController
 
   def show
+    @genre = Genre.find(params[:id])
     @posts = Post.where(genre_name: params[:id]).order(:main_code)
-    @genre = Genre.where(genre_name: params[:id]).first
   end
 
   private

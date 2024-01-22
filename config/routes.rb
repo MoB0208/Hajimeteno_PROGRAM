@@ -37,17 +37,15 @@ Rails.application.routes.draw do
   # 会員用
   # Top画面
   root to: 'users/homes#top'
-  
-
 
   scope module: :users do
-    # 言語一覧
-    get 'genres/:id', to: 'genres#show', as: 'genre'
     # ホーム
     get '/home', to: 'users#show'
     get '/infomation/edit', to: 'users#edit'
     patch 'users/update'
 
+    # 言語一覧
+    get 'genres/:id', to: 'genres#show', as: 'genre'
 
     # 投稿関連
     resources :posts, only: [:new, :create, :edit, :update, :show, :destroy] do
