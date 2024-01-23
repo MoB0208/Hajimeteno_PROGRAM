@@ -6,7 +6,8 @@ class Admins::CommentsController < ApplicationController
   end
 
   def show
-    @comment = Comment.find(params[:id])
+    @post = Post.find(params[:id])
+    @comment = @post.comment.find(params[:id])
     @comments = Comment.where(user_id: params[:id])
   end
 
