@@ -1,4 +1,4 @@
-<!--model:Postの検索結果一覧用-->
+<!--関連記事用-->
 <% if post.any? %>
   <% post.each do |post| %>
   <div class="col rounded bg-light my-3 p-2">
@@ -10,6 +10,9 @@
       <%= post.created_at.strftime('%Y/%m/%d') %>
       <%= render '/users/favorites/form', post: post %>
     </p>
+    <span class="rounded bg-secondary text-white px-1">
+      <%= post.genre.genre_name %>
+    </span>
   </div>
   <% end %>
 <% else %>

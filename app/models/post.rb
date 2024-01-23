@@ -8,6 +8,13 @@ class Post < ApplicationRecord
   has_many :contents, dependent: :destroy
   has_many :main_texts, dependent: :destroy
 
+  has_many :reverse_of_post_relationships, class_name: "PostRelationship", foreign_key: "relation_post_id", dependent: :destroy
+  has_many :posts, through: :reverse_of_post_relationships, source: :post
+  has_many :post_relationships, class_name: "PostRelationship", foreign_key: "post_id", dependent: :destroy
+  has_many :relation_posts, through: :post_relationships, source: :relation_post
+  # postは投稿する記事または閲覧する記事
+  # relation_postは関連記事
+
   validates :title, presence: true
   validates :main_code, presence: true
 
