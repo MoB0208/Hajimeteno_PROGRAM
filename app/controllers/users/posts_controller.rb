@@ -70,6 +70,8 @@ class Users::PostsController < ApplicationController
     @genre = @post.genres
     @posts = @post.main_code
     @comment = Comment.new
+    @same_posts = Post.where(genre_id: @post.genre.genre_id)
+    @other_posts = Post.where(main_code: @post.main_code)
   end
 
   def destroy

@@ -2,16 +2,16 @@
 <% if post.any? %>
   <% post.each do |post| %>
   <div class="col rounded bg-light my-3 p-2">
-    <h4><%= link_to post.main_code, post_path(post) %></h4>
-    <p><%= post.title %></p>
+    <h4><%= link_to post.relation_post.main_code, post_path(post) %></h4>
+    <p><%= post.relation_post.title %></p>
     <p>
-      <%= image_tag post.user.get_image, size: "50x50" %>
-      <%= post.user.account_name %>
-      <%= post.created_at.strftime('%Y/%m/%d') %>
+      <%= image_tag post.relation_post.user.get_image, size: "50x50" %>
+      <%= post.relation_post.user.account_name %>
+      <%= post.relation_post.created_at.strftime('%Y/%m/%d') %>
       <%= render '/users/favorites/form', post: post %>
     </p>
     <span class="rounded bg-secondary text-white px-1">
-      <%= post.genre.genre_name %>
+      <%= post.relation_post.genre.genre_name %>
     </span>
   </div>
   <% end %>
