@@ -7,6 +7,15 @@
         <%= flash[:notice] %>
         <!--記事-->
         <div>
+          <!--記事編集-->
+          <% if @post.user == current_user %>
+            <div class="text-right">
+              <%= link_to "編集する", edit_post_path(@post), class: "btn btn-success" %>
+              <%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
+            </div>
+          <% end %>
+        </div>
+        <div>
           <h3><%= @post.title %></h3>
         </div>
         <div>
@@ -27,24 +36,16 @@
             <!--お気に入り-->
             <%= render '/users/favorites/form', post: @post %>
           </div>
-          <div>
-            <!--記事編集-->
-            <% if @post.user == current_user %>
-              <div class="text-right">
-                <%= link_to "編集する", edit_post_path(@post), class: "btn btn-success" %>
-                <%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
-              </div>
-            <% end %>
-          </div>
         </div>
         <div>
+          <div>
+            <h3>実行環境</h3>
+            <%= @post.version %>
+          </div>
           <div>
             <% @post.contents.each do |content| %>
               <h3><%= content.table_of_content %></h3>
             <% end %>
-          </div>
-          <div>
-            <h3><%= @post.version %></h3>
           </div>
           <div>
             <% @post.main_texts.each do |main_text| %>

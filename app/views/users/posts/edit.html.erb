@@ -16,6 +16,10 @@
           <div class="form-group">
             <!--言語一覧選択-->
             <%= render '/users/genres/form', f: f %>
+            <div class="form-group">
+              <%= f.label :version, "実行環境" %>
+              <%= f.text_area :version, class: 'form-control version', placeholder:"実行環境の各バージョンを記入してください。" %>
+            </div>
           </div>
           <div>
             <!--目次記入-->

@@ -4,6 +4,9 @@
     <div class="col-8 mx-auto p-5">
       <div class="rounded bg-white mx-auto p-5">
         <!--記事-->
+        <div class="text-right">
+          <%= link_to "削除する", admins_post_path(@post), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
+        </div>
         <div>
           <h3><%= @post.title %></h3>
         </div>
@@ -21,18 +24,16 @@
           <%= image_tag @post.user.get_image, size: "50x50" %>
           <%= @post.user.account_name %>
           <%= @post.created_at.strftime('%Y/%m/%d') %>
-          <div class="text-right">
-            <%= link_to "削除する", admins_post_path(@post), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
-          </div>
         </div>
         <div>
+          <div>
+            <h3>実行環境</h3>
+              <%= @post.version %>
+          </div>
           <div>
             <% @post.contents.each do |content| %>
               <h3><%= content.table_of_content %></h3>
             <% end %>
-          </div>
-          <div>
-            <h3><%= @post.version %></h3>
           </div>
           <div>
             <% @post.main_texts.each do |main_text| %>
