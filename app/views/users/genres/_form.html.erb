@@ -5,11 +5,14 @@
     <div class="form-group">
       <p>言語</p>
       <div>
-        <% @genre.each do |genre| %>
-          <%= g.radio_button :genre_name, class: 'form-control genre_name' %>
-          <%= g.label :genre_name %>
-        <% end %>
-        <%#= genre.collection_radio_buttons(:genre_name, Genre.genre_names_i18n, :first , :last) %>
+        <p>
+          <%= f.collection_check_boxes(:genre_ids, @genres, :id, :genre_name) do |genre| %>
+            <%= genre.label do %>
+              <%= genre.check_box %>
+              <%= genre.text %>
+            <% end %>
+          <% end %>
+        </p>
       </div>
     </div>
   <% else %>
@@ -17,11 +20,14 @@
     <div class="form-group">
       <p>言語</p>
       <div>
-        <% @genre.each do |genre| %>
-          <%= g.radio_button :genre_name, value: @genre.first.genre_name, class: 'form-control genre_name' %>
-          <%= g.label :genre_name %>
-        <% end %>
-        <%#= genre.collection_radio_buttons(:genre_name, Genre.genre_names_i18n, :first , :last, {checked: @genre.first.genre_name}) %>
+        <p>
+          <%= f.collection_check_boxes(:genre_ids, @genres, :id, :genre_name) do |genre| %>
+            <%= genre.label do %>
+              <%= genre.check_box %>
+              <%= genre.text %>
+            <% end %>
+          <% end %>
+        </p>
       </div>
     </div>
   <% end %>

@@ -3,7 +3,7 @@ class Users::PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @genre = Genre.all
+    @genres = Genre.all
     @content = Content.new
     @main_text = MainText.new
     @post_code = PostCode.new
@@ -12,9 +12,6 @@ class Users::PostsController < ApplicationController
   def create
     @user = current_user
     @post = Post.new(post_params)
-    @genre = @post.genres.build(
-      genre_name: params[:post][:genre][:genre_name],
-    )
     @content = @post.contents.build(
       table_of_content: params[:post][:content][:table_of_content],
     )
@@ -36,7 +33,8 @@ class Users::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @genre = @post.genres
+    @genres = Genre.all
+    # @genres = @post.genres
     @content = @post.contents
     @main_text = @post.main_texts
     @post_code = @post.post_codes
@@ -44,11 +42,7 @@ class Users::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-
     if @post.update(post_params)
-       @genre = @post.genres.update(
-         genre_name: params[:post][:genre][:genre_name],
-       )
        @content = @post.contents.update(
          table_of_content: params[:post][:content][:table_of_content],
        )
@@ -70,8 +64,8 @@ class Users::PostsController < ApplicationController
     @genre = @post.genres
     @posts = @post.main_code
     @comment = Comment.new
-    @same_posts = Post.where(genre_id: @post.genre.genre_id)
-    @other_posts = Post.where(main_code: @post.main_code)
+    # @same_posts = Post.where(genre_id: @post.genre.genre_id)
+    # @other_posts = Post.where(main_code: @post.main_code)
   end
 
   def destroy
