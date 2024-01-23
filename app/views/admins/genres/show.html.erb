@@ -2,6 +2,7 @@
 <div class="container-fluid">
   <div class="row flex-column m-5 p-5">
     <div class="col-8 rounded bg-white mx-auto p-5">
+      <h2><%= @genre.genre_name %></h2>
       <% if @posts.any? %>
         <% @posts.each do |post| %>
           <div class="rounded bg-light my-3 p-2">

@@ -1,24 +1,28 @@
 <!--言語一覧選択用-->
-<%= f.fields_for :genre do |genre| %>
+<%= f.fields_for :genre do |g| %>
   <% if @post.new_record? %>
     <!--記事投稿-->
     <div class="form-group">
       <p>言語</p>
       <div>
-        <% genre.each do |genre| %>
-          <%= genre.label :genre_name %>
-          <%= genre.radio_button :genre_name, class: 'form-control genre_name' %>
-          <%#= genre.collection_radio_buttons(:genre_name, Genre.genre_names_i18n, :first , :last) %>
+        <% @genre.each do |genre| %>
+          <%= g.radio_button :genre_name, class: 'form-control genre_name' %>
+          <%= g.label :genre_name %>
         <% end %>
+        <%#= genre.collection_radio_buttons(:genre_name, Genre.genre_names_i18n, :first , :last) %>
       </div>
     </div>
   <% else %>
     <!--記事編集-->
     <div class="form-group">
       <p>言語</p>
-      <%= genre.label :genre_name %>
-      <%= genre.radio_button :genre_name, value: @genre.first.genre_name, class: 'form-control genre_name' %>
-      <%#= genre.collection_radio_buttons(:genre_name, Genre.genre_names_i18n, :first , :last, {checked: @genre.first.genre_name}) %>
+      <div>
+        <% @genre.each do |genre| %>
+          <%= g.radio_button :genre_name, value: @genre.first.genre_name, class: 'form-control genre_name' %>
+          <%= g.label :genre_name %>
+        <% end %>
+        <%#= genre.collection_radio_buttons(:genre_name, Genre.genre_names_i18n, :first , :last, {checked: @genre.first.genre_name}) %>
+      </div>
     </div>
   <% end %>
 <% end %>

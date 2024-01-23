@@ -15,7 +15,7 @@
         <div>
           <% @post.genres.each do |genre| %>
             <span class="rounded bg-secondary text-white px-1">
-              <%= t(".genre_name", default: genre.genre_name_i18n) %>
+              <%= genre.genre_name %>
             </span>
           <% end %>
         </div>
