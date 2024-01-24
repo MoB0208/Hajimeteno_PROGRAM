@@ -4,7 +4,7 @@
   <% genres.each do |genre| %>
     <table>
       <tr>
-        <%= link_to genre.genre_name, genre_path(genre) %>
+        <%= link_to genre.genre_name, genre_path(genre, genre_id: genre.id) %>
       </tr>
     </table>
   <% end %>
