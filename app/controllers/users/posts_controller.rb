@@ -3,6 +3,7 @@ class Users::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @posts = Post.all
     @genres = Genre.all
     @content = Content.new
     @main_text = MainText.new
