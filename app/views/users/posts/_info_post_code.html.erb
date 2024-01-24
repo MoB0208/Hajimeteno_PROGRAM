@@ -4,6 +4,13 @@
   <div class="col rounded bg-light my-3 p-2">
     <h4><%= link_to post_code.post.main_code, post_path(post_code.post) %></h4>
     <p><%= post_code.post.title %></p>
+    <div>
+      <% post_code.post.genres.each do |genre| %>
+        <span class="rounded bg-secondary text-white mx-1 px-1">
+          <%= genre.genre_name %>
+        </span>
+      <% end %>
+    </div>
     <p>
       <%= image_tag post_code.post.user.get_image, size: "50x50" %>
       <%= post_code.post.user.account_name %>

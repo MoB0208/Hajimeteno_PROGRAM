@@ -1,9 +1,16 @@
 <!--model:Contentの検索結果一覧用-->
-<% if content.npost.any? %>
-  <% content.post.each do |content| %>
+<% if content.any? %>
+  <% content.each do |content| %>
   <div class="col rounded bg-light my-3 p-2">
     <h4><%= link_to content.post.main_code, post_path(content.post) %></h4>
     <p><%= content.post.title %></p>
+    <div>
+      <% content.post.genres.each do |genre| %>
+        <span class="rounded bg-secondary text-white mx-1 px-1">
+          <%= genre.genre_name %>
+        </span>
+      <% end %>
+    </div>
     <p>
       <%= image_tag content.post.user.get_image, size: "50x50" %>
       <%= content.post.user.account_name %>
