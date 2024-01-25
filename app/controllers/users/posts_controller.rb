@@ -25,6 +25,9 @@ class Users::PostsController < ApplicationController
     )
     @post.user_id = current_user.id
     if @post.save
+      params[:post][:post_ids].each do |relation_posts|
+        @post.relation(relation_posts)
+      end
       redirect_to post_path(@post), notice: "投稿しました。"
     else
       @posts = Post.all
@@ -35,7 +38,6 @@ class Users::PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @genres = Genre.all
-    # @genres = @post.genres
     @content = @post.contents
     @main_text = @post.main_texts
     @post_code = @post.post_codes
@@ -65,8 +67,8 @@ class Users::PostsController < ApplicationController
     @genre = @post.genres
     @posts = @post.main_code
     @comment = Comment.new
-    # @same_posts = Post.where(genre_id: @post.genre.genre_id)
-    # @other_posts = Post.where(main_code: @post.main_code)
+    @same_posts = Post.where(genre_id: @post.genre.genre_id)
+    @other_posts = Post.where(main_code: @post.main_code)
   end
 
   def destroy

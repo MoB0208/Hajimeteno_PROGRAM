@@ -22,6 +22,15 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  # フォローしたときの処理
+  def relation(post_id)
+    post_relationships.create(relation_post_id: post_id)
+  end
+  # フォローを外すときの処理
+  def unrelation(post_id)
+    post_relationships.find_by(relation_post_id: post_id).destroy
+  end
+
   def self.search_for(content, method)
     if method == 'perfect'
       Post.where(title: content)
