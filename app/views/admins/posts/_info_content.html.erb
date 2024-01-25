@@ -1,6 +1,6 @@
 <!--管理者用model:Contentの検索結果一覧用-->
-<% if content.npost.any? %>
-  <% content.post.each do |content| %>
+<% if content.any? %>
+  <% content.each do |content| %>
   <div class="col rounded bg-light my-3 p-2">
     <h4><%= link_to content.post.main_code, admins_post_path(content.post) %></h4>
     <p><%= content.post.title %></p>
