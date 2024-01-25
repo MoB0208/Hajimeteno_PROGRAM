@@ -41,10 +41,12 @@
     <div class="col-8 mx-auto">
       <div class="rounded bg-white mx-5 p-5">
         <h2>コメント</h2>
-        <h4><%= @comment.comment_body %></h4>
-        <p><%= @comment.post.title %></p>
-        <p><%= @comment.created_at.strftime('%Y/%m/%d') %></p>
-        <%= link_to "削除する", admins_post_comment_path(@comment.post, @comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}  %>
+        <div class="rounded bg-light my-3 p-2">
+          <h4><%= @comment.comment_body %></h4>
+          <p><%= link_to @comment.post.title, admins_post_path(@comment.post) %></p>
+          <p><%= @comment.created_at.strftime('%Y/%m/%d') %></p>
+          <%= link_to "削除する", admins_post_comment_path(@comment.post, @comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}  %>
+        </div>
       </div>
       <div class="rounded bg-white m-5 p-5">
         <h2>過去に投稿したコメント</h2>
@@ -53,7 +55,7 @@
             <div class="rounded bg-light my-3 p-2">
               <h4><%= comment.comment_body %></h4>
               <p><%= comment.created_at.strftime('%Y/%m/%d') %></p>
-              <p><%= link_to comment.post.title, admins_post_path(comment) %></p>
+              <p><%= link_to comment.post.title, admins_post_path(comment.post) %></p>
               <%= link_to "削除する", admins_post_comment_path(comment.post, comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}  %>
             </div>
           <% end %>
