@@ -2,7 +2,9 @@ class Users::PostsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def new
+    # 投稿する記事
     @post = Post.new
+    # 関連記事
     @posts = Post.all
     @genres = Genre.all
     @content = Content.new
@@ -25,6 +27,7 @@ class Users::PostsController < ApplicationController
     )
     @post.user_id = current_user.id
     if @post.save
+      # 関連記事の保存
       params[:post][:post_ids].each do |relation_posts|
         @post.relation(relation_posts)
       end
@@ -69,10 +72,33 @@ class Users::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @genre = @post.genres
-    @posts = @post.main_code
     @comment = Comment.new
-    @same_posts = @post.posts.joins(:genres).where(genres: {id: @post.genres.ids})
-    @other_posts = @post.posts.where(main_code: @post.main_code)
+
+    # 関連記事
+    @follower_posts = @post.posts.joins(:genres).where(genres: {id: @post.genres.ids})
+    @follow_posts = @post.relation_posts.joins(:genres).where(genres: {id: @post.genres.ids})
+    if @follower_posts.blank? && @follow_posts.blank?
+      @same_posts = []
+    elsif @follower_posts.blank?
+      @same_posts = @follow_posts
+    elsif @follow_posts.blank?
+      @same_posts = @follower_posts
+    else
+　    @same_posts = Post.where(id: @follower_posts.ids+@follow_posts.ids)
+　  end
+
+    # 別言語の関連記事
+    @other_follower_posts = @post.posts.where(main_code: @post.main_code)
+    @other_follow_posts = @post.relation_posts.where(main_code: @post.main_code)
+    if @other_follower_posts.blank? && @other_follow_posts.blank?
+      @other_posts = []
+    elsif @other_follower_posts.blank?
+      @other_posts = @other_follow_posts
+    elsif @other_follow_posts.blank?
+      @other_posts = @other_follower_posts
+    else
+　    @other_posts = Post.where(id: @other_follower_posts.ids+@other_follow_posts.ids)
+　  end
   end
 
   def destroy
