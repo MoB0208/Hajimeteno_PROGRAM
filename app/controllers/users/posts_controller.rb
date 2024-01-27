@@ -84,8 +84,8 @@ class Users::PostsController < ApplicationController
     elsif @follow_posts.blank?
       @same_posts = @follower_posts
     else
-　    @same_posts = Post.where(id: @follower_posts.ids+@follow_posts.ids)
-　  end
+      @same_posts = Post.where(id: @follower_posts.ids+@follow_posts.ids)
+    end
 
     # 別言語の関連記事
     @other_follower_posts = @post.posts.where(main_code: @post.main_code)
@@ -97,8 +97,8 @@ class Users::PostsController < ApplicationController
     elsif @other_follow_posts.blank?
       @other_posts = @other_follower_posts
     else
-　    @other_posts = Post.where(id: @other_follower_posts.ids+@other_follow_posts.ids)
-　  end
+      @other_posts = Post.where(id: @other_follower_posts.ids+@other_follow_posts.ids)
+    end
   end
 
   def destroy
