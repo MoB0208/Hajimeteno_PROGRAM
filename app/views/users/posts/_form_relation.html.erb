@@ -1,42 +1,40 @@
 <!--投稿時関連記事選択用-->
-<%#= f.fields_for :posts do |post| %>
-  <% if @post.new_record? %>
-    <!--記事投稿-->
-    <div class="form-group">
-      <p>今回投稿するメインコードと同じものを選択してください。こちらが関連記事として表示されます。</p>
-      <% if @posts.any? %>
-      <div>
-        <p>
-          <%= f.collection_check_boxes(:post_ids, @posts, :id, :main_code) do |post| %>
-            <%= post.label do %>
-              <%= post.check_box %>
-              <%= post.text %>
-            <% end %>
+<% if @post.new_record? %>
+  <!--記事投稿-->
+  <div class="form-group">
+    <p>今回投稿するメインコードと同じものを選択してください。こちらが関連記事として表示されます。</p>
+    <% if @posts.any? %>
+    <div>
+      <p>
+        <%= f.collection_check_boxes(:post_ids, @posts, :id, :main_code) do |post| %>
+          <%= post.label do %>
+            <%= post.check_box %>
+            <%= post.text %>
           <% end %>
-        </p>
-      </div>
-      <% else %>
-        <p>現在、関連付けが可能な記事はありません。</p>
-      <% end %>
+        <% end %>
+      </p>
     </div>
-  <% else %>
-    <!--記事編集-->
-    <div class="form-group">
-      <p>今回投稿するメインコードと同じものを選択してください。こちらが関連記事として表示されます。</p>
-      <% if post.any? %>
-      <div>
-        <p>
-          <%= f.collection_check_boxes(:genre_ids, @genres, :id, :genre_name) do |genre| %>
-            <%= genre.label do %>
-              <%= genre.check_box %>
-              <%= genre.text %>
-            <% end %>
+    <% else %>
+      <p>現在、関連付けが可能な記事はありません。</p>
+    <% end %>
+  </div>
+<% else %>
+  <!--記事編集-->
+  <div class="form-group">
+    <p>今回投稿するメインコードと同じものを選択してください。こちらが関連記事として表示されます。</p>
+    <% if @posts.any? %>
+    <div>
+      <p>
+        <%= f.collection_check_boxes(:post_ids, @posts, :id, :main_code) do |post| %>
+          <%= post.label do %>
+            <%= post.check_box %>
+            <%= post.text %>
           <% end %>
-        </p>
-      </div>
-      <% else %>
-        <p>現在、関連付けが可能な記事はありません。</p>
-      <% end %>
+        <% end %>
+      </p>
     </div>
-  <% end %>
-<%# end %>
+    <% else %>
+      <p>現在、関連付けが可能な記事はありません。</p>
+    <% end %>
+  </div>
+<% end %>

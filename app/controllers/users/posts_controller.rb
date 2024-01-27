@@ -28,7 +28,6 @@ class Users::PostsController < ApplicationController
       params[:post][:post_ids].each do |relation_posts|
         @post.relation(relation_posts)
       end
-      # byebug
       redirect_to post_path(@post), notice: "投稿しました。"
     else
       @posts = Post.all
@@ -38,6 +37,7 @@ class Users::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @posts = Post.all
     @genres = Genre.all
     @content = @post.contents
     @main_text = @post.main_texts
@@ -57,6 +57,9 @@ class Users::PostsController < ApplicationController
          position: params[:post][:post_code][:position],
          code: params[:post][:post_code][:code],
        )
+       params[:post][:post_ids].each do |relation_posts|
+        @post.relation(relation_posts)
+       end
       redirect_to post_path(@post), notice: "記事を修正しました。"
     else
       render :edit, notice: "記事の保存に失敗しました。"
