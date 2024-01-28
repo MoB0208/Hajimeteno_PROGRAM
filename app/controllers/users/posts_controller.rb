@@ -27,10 +27,6 @@ class Users::PostsController < ApplicationController
     )
     @post.user_id = current_user.id
     if @post.save
-      # 関連記事の保存
-      params[:post][:post_ids].each do |relation_posts|
-        @post.relation(relation_posts)
-      end
       redirect_to post_path(@post), notice: "投稿しました。"
     else
       @posts = Post.all
@@ -49,6 +45,7 @@ class Users::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    @post.post_relationships.destroy_all
     if @post.update(post_params)
        @content = @post.contents.update(
          table_of_content: params[:post][:content][:table_of_content],
@@ -60,9 +57,6 @@ class Users::PostsController < ApplicationController
          position: params[:post][:post_code][:position],
          code: params[:post][:post_code][:code],
        )
-       params[:post][:post_ids].each do |relation_posts|
-        @post.relation(relation_posts)
-       end
       redirect_to post_path(@post), notice: "記事を修正しました。"
     else
       render :edit, notice: "記事の保存に失敗しました。"
@@ -112,7 +106,9 @@ class Users::PostsController < ApplicationController
   def post_params
     values = params.require(:post).permit(
       :title, :main_code, :version,
-      genre_ids: []
+      genre_ids: [],
+      relation_post_ids: []
+      # relation_post_idsは関連記事
     )
     if values[:genre_ids].nil?
       values[:genre_ids] = []

@@ -4,16 +4,16 @@
   <div class="form-group">
     <p>今回投稿するメインコードと同じものを選択してください。こちらが関連記事として表示されます。</p>
     <% if @posts.any? %>
-    <div>
-      <p>
-        <%= f.collection_check_boxes(:post_ids, @posts, :id, :main_code) do |post| %>
-          <%= post.label do %>
-            <%= post.check_box %>
-            <%= post.text %>
+      <div>
+        <p>
+          <%= f.collection_check_boxes(:relation_post_ids, @posts, :id, :main_code) do |post| %>
+            <%= post.label do %>
+              <%= post.check_box %>
+              <%= post.text %>
+            <% end %>
           <% end %>
-        <% end %>
-      </p>
-    </div>
+        </p>
+      </div>
     <% else %>
       <p>現在、関連付けが可能な記事はありません。</p>
     <% end %>
@@ -23,16 +23,16 @@
   <div class="form-group">
     <p>今回投稿するメインコードと同じものを選択してください。こちらが関連記事として表示されます。</p>
     <% if @posts.any? %>
-    <div>
-      <p>
-        <%= f.collection_check_boxes(:post_ids, @posts, :id, :main_code) do |post| %>
-          <%= post.label do %>
-            <%= post.check_box %>
-            <%= post.text %>
+      <div>
+        <p>
+          <%= f.collection_check_boxes(:relation_post_ids, @posts, :id, :main_code) do |post| %>
+            <%= post.label do %>
+              <%= post.check_box %>
+              <%= post.text %>
+            <% end %>
           <% end %>
-        <% end %>
-      </p>
-    </div>
+        </p>
+      </div>
     <% else %>
       <p>現在、関連付けが可能な記事はありません。</p>
     <% end %>
