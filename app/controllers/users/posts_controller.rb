@@ -13,8 +13,10 @@ class Users::PostsController < ApplicationController
   end
 
   def create
+   # byebug
     @user = current_user
     @post = Post.new(post_params)
+    # byebug
     @content = @post.contents.build(
       table_of_content: params[:post][:content][:table_of_content],
     )
@@ -27,9 +29,17 @@ class Users::PostsController < ApplicationController
     )
     @post.user_id = current_user.id
     if @post.save
+       # 関連記事の保存
+      params[:post][:relation_post_ids].each do |relation_posts|
+        @post.relation(relation_posts)
+      end
       redirect_to post_path(@post), notice: "投稿しました。"
     else
       @posts = Post.all
+      @genres = Genre.all
+      @content = Content.new
+      @main_text = MainText.new
+      @post_code = PostCode.new
       render :new
     end
   end
@@ -57,6 +67,10 @@ class Users::PostsController < ApplicationController
          position: params[:post][:post_code][:position],
          code: params[:post][:post_code][:code],
        )
+        # 関連記事の保存
+      params[:post][:relation_post_ids].each do |relation_posts|
+        @post.relation(relation_posts)
+      end
       redirect_to post_path(@post), notice: "記事を修正しました。"
     else
       render :edit, notice: "記事の保存に失敗しました。"
@@ -107,7 +121,7 @@ class Users::PostsController < ApplicationController
     values = params.require(:post).permit(
       :title, :main_code, :version,
       genre_ids: [],
-      relation_post_ids: []
+      # relation_post_ids: []
       # relation_post_idsは関連記事
     )
     if values[:genre_ids].nil?
