@@ -73,6 +73,11 @@ class Users::PostsController < ApplicationController
       end
       redirect_to post_path(@post), notice: "記事を修正しました。"
     else
+      @posts = Post.all
+      @genres = Genre.all
+      @content = @post.contents
+      @main_text = @post.main_texts
+      @post_code = @post.post_codes
       render :edit, notice: "記事の保存に失敗しました。"
     end
   end
