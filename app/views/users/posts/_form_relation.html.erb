@@ -3,7 +3,6 @@
   <!--記事投稿-->
   <div class="form-group">
     <p>今回投稿するメインコードと同じものを選択してください。こちらが関連記事として表示されます。</p>
-    <% if @posts.any? %>
       <div>
         <p>
           <%= f.collection_check_boxes(:relation_post_ids, @posts, :id, :main_code) do |post| %>
@@ -13,10 +12,11 @@
             <% end %>
           <% end %>
         </p>
+        <% unless @posts.any? %>
+          <p>現在、関連付けが可能な記事はありません。</p>
+        <% end %>
       </div>
-    <% else %>
-      <p>現在、関連付けが可能な記事はありません。</p>
-    <% end %>
+    
   </div>
 <% else %>
   <!--記事編集-->
