@@ -39,12 +39,12 @@
         </div>
         <div>
           <div>
-            <h3>実行環境</h3>
+            <h3 style="background: linear-gradient(transparent 85%, #DFDFDF 0%);">実行環境</h3>
             <%= @post.version %>
           </div>
-          <div>
+          <div class="mt-4">
             <% @post.contents.each do |content| %>
-              <h3><%= content.table_of_content %></h3>
+              <h3 style="background: linear-gradient(transparent 85%, #DFDFDF 0%);"><%= content.table_of_content %></h3>
             <% end %>
           </div>
           <div>
@@ -52,7 +52,7 @@
               <%= main_text.body %>
             <% end %>
           </div>
-          <div class="flex-column rounded bg-dark text-white">
+          <div class="flex-column rounded bg-dark text-white mt-2">
             <% @post.post_codes.each do |post_code| %>
               <div class="px-2">
                 <span class="rounded-bottom bg-info text-white px-2">
