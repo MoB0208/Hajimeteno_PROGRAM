@@ -3,37 +3,35 @@
   <!--記事投稿-->
   <div class="form-group">
     <p>今回投稿するメインコードと同じものを選択してください。こちらが関連記事として表示されます。</p>
-      <div>
-        <p>
-          <%= f.collection_check_boxes(:relation_post_ids, @posts, :id, :main_code) do |post| %>
-            <%= post.label do %>
-              <%= post.check_box %>
-              <%= post.text %>
-            <% end %>
+    <div>
+      <p>
+        <%= f.collection_check_boxes(:relation_post_ids, @posts, :id, :main_code) do |post| %>
+          <%= post.label do %>
+            <%= post.check_box %>
+            <%= post.text %>
           <% end %>
-        </p>
-        <% unless @posts.any? %>
-          <p>現在、関連付けが可能な記事はありません。</p>
         <% end %>
-      </div>
-    
+      </p>
+    </div>
+    <% unless @posts.any? %>
+      <p>現在、関連付けが可能な記事はありません。</p>
+    <% end %>
   </div>
 <% else %>
   <!--記事編集-->
   <div class="form-group">
     <p>今回投稿するメインコードと同じものを選択してください。こちらが関連記事として表示されます。</p>
-    <% if @posts.any? %>
-      <div>
-        <p>
-          <%= f.collection_check_boxes(:relation_post_ids, @posts, :id, :main_code) do |post| %>
-            <%= post.label do %>
-              <%= post.check_box %>
-              <%= post.text %>
-            <% end %>
+    <div>
+      <p>
+        <%= f.collection_check_boxes(:relation_post_ids, @posts, :id, :main_code) do |post| %>
+          <%= post.label do %>
+            <%= post.check_box %>
+            <%= post.text %>
           <% end %>
-        </p>
-      </div>
-    <% else %>
+        <% end %>
+      </p>
+    </div>
+    <% unless @posts.any? %>
       <p>現在、関連付けが可能な記事はありません。</p>
     <% end %>
   </div>
