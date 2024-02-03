@@ -6,12 +6,12 @@ class Users::SearchesController < ApplicationController
     @method = params[:method]
     if @model == 'Post'
       @records = Post.search_for(@content, @method)
-    elsif @model == 'PostCode'
-      @records = PostCode.search_for(@content, @method)
-    elsif @model == 'Content'
-      @records = Content.search_for(@content, @method)
-    else
-      @records = MainText.search_for(@content, @method)
+    # elsif @model == 'PostCode'
+    #   @records = PostCode.search_for(@content, @method)
+    # elsif @model == 'Content'
+    #   @records = Content.search_for(@content, @method)
+    # else
+    #   @records = MainText.search_for(@content, @method)
     end
   end
 end
