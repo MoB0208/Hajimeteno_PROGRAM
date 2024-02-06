@@ -3,13 +3,13 @@
   <% if @post.new_record? %>
     <!--記事投稿-->
     <div class="form-group">
-      <%= content.label :table_of_content, "目次" %>
+      <%= content.label :table_of_content, "目次" %><p class="text-danger">※</p>
       <%= content.text_area :table_of_content, class: 'form-control body', placeholder:"目次（章タイトル）を記入してください。" %>
     </div>
   <% else %>
     <!--記事編集-->
     <div class="form-group">
-      <%= content.label :table_of_content, "目次" %>
+      <%= content.label :table_of_content, "目次" %><p class="text-danger">※</p>
       <%= content.text_area :table_of_content, value: @content.first.table_of_content, class: 'form-control body', placeholder:"目次（章タイトル）を記入してください。" %>
     </div>
   <% end %>

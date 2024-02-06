@@ -1,34 +1,36 @@
 <!--言語一覧選択用-->
-<%#= f.fields_for :genre do |g| %>
-  <% if @post.new_record? %>
-    <!--記事投稿-->
-    <div class="form-group">
-      <p>言語</p>
-      <div>
-        <p>
-          <%= f.collection_check_boxes(:genre_ids, @genres, :id, :genre_name) do |genre| %>
-            <%= genre.label do %>
-              <%= genre.check_box %>
-              <%= genre.text %>
-            <% end %>
+<% if @post.new_record? %>
+  <!--記事投稿-->
+  <div class="form-group">
+    <p>言語</p>
+    <p class="text-danger">※</p>
+    <p>複数選択可</p>
+    <div>
+      <p>
+        <%= f.collection_check_boxes(:genre_ids, @genres, :id, :genre_name) do |genre| %>
+          <%= genre.label do %>
+            <%= genre.check_box %>
+            <%= genre.text %>
           <% end %>
-        </p>
-      </div>
+        <% end %>
+      </p>
     </div>
-  <% else %>
-    <!--記事編集-->
-    <div class="form-group">
-      <p>言語</p>
-      <div>
-        <p>
-          <%= f.collection_check_boxes(:genre_ids, @genres, :id, :genre_name) do |genre| %>
-            <%= genre.label do %>
-              <%= genre.check_box %>
-              <%= genre.text %>
-            <% end %>
+  </div>
+<% else %>
+  <!--記事編集-->
+  <div class="form-group">
+    <p>言語</p>
+    <p class="text-danger">※</p>
+    <p>複数選択可</p>
+    <div>
+      <p>
+        <%= f.collection_check_boxes(:genre_ids, @genres, :id, :genre_name) do |genre| %>
+          <%= genre.label do %>
+            <%= genre.check_box %>
+            <%= genre.text %>
           <% end %>
-        </p>
-      </div>
+        <% end %>
+      </p>
     </div>
-  <% end %>
-<%# end %>
+  </div>
+<% end %>

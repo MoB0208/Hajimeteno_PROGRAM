@@ -3,21 +3,21 @@
   <% if @post.new_record? %>
     <!--記事投稿-->
     <div class="form-group">
-      <%= post_code.label :position, "記入場所" %>
+      <%= post_code.label :position, "記入場所" %><p class="text-danger">※</p>
       <%= post_code.text_area :position, class: 'form-control body', placeholder:"そのコードを記入する場所を具体的に記入してください。（例：ターミナル・users_controller.rbなど）" %>
     </div>
     <div class="form-group">
-      <%= post_code.label :code, "コード" %>
+      <%= post_code.label :code, "コード" %><p class="text-danger">※</p>
       <%= post_code.text_field :code, class: 'form-control code', placeholder:"使用例を記入してください。" %>
     </div>
   <% else %>
     <!--記事編集-->
     <div class="form-group">
-      <%= post_code.label :position, "記入場所" %>
+      <%= post_code.label :position, "記入場所" %><p class="text-danger">※</p>
       <%= post_code.text_area :position, value: @post_code.first.position, class: 'form-control body', placeholder:"そのコードを記入する場所を具体的に記入してください。（例：ターミナル・users_controller.rbなど）" %>
     </div>
     <div class="form-group">
-      <%= post_code.label :code, "コード" %>
+      <%= post_code.label :code, "コード" %><p class="text-danger">※</p>
       <%= post_code.text_field :code, value: @post_code.first.code, class: 'form-control code', placeholder:"使用例を記入してください。" %>
     </div>
   <% end %>

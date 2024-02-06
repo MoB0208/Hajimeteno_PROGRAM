@@ -3,13 +3,13 @@
   <% if @post.new_record? %>
     <!--記事投稿-->
     <div class="form-group">
-      <%= main_text.label :body, "本文" %>
+      <%= main_text.label :body, "本文" %><p class="text-danger">※</p>
       <%= main_text.text_area :body, class: 'form-control body', placeholder:"本文を記入してください。" %>
     </div>
   <% else %>
     <!--記事編集-->
     <div class="form-group">
-      <%= main_text.label :body, "本文" %>
+      <%= main_text.label :body, "本文" %><p class="text-danger">※</p>
       <%= main_text.text_area :body, value: @main_text.first.body, class: 'form-control body', placeholder:"本文を記入してください。" %>
     </div>
   <% end %>
