@@ -5,23 +5,8 @@
       <h2><%= @genre.genre_name %></h2>
       <% if @posts.any? %>
         <% @posts.each do |post| %>
-          <div class="rounded bg-light my-3 p-2">
-            <h4><%= link_to post.main_code, post_path(post) %></h4>
-            <p><%= post.title %></p>
-            <div>
-              <% post.genres.each do |genre| %>
-                <span class="rounded bg-secondary text-white mx-1 px-1">
-                  <%= genre.genre_name %>
-                </span>
-              <% end %>
-            </div>
-            <p>
-              <%= image_tag post.user.get_image, size: "30x30" %>
-              <%= post.user.account_name %>
-              <%= post.created_at.strftime('%Y/%m/%d') %>
-              <%= render '/users/favorites/form', post: post %>
-            </p>
-          </div>
+          <!--一覧テンプレート-->
+          <%= render '/users/posts/info', post: post %>
         <% end %>
       <% else %>
         <p>該当する記事はありません。</p>
