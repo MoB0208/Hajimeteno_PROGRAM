@@ -33,23 +33,26 @@ class Post < ApplicationRecord
 
   def self.search_for(content, method)
     if method == 'perfect'
-      Post.joins(:content, :main_text, :post_code).where('title LIKE(?) OR main_code LIKE(?) OR contents.table_of_content LIKE(?) OR main_texts.body LIKE(?) OR post_codes.code LIKE(?)', content, content, content, content, content)
+      Post.where(title: content)
     elsif method == 'forward'
-      Post.joins(:content, :main_text, :post_code).where('title LIKE(?) OR main_code LIKE(?) OR contents.table_of_content LIKE(?) OR main_texts.body LIKE(?) OR post_codes.code LIKE(?)', content+'%', content+'%', content+'%', content+'%', content+'%')
+      Post.where('title LIKE ? OR main_code LIKE ?', content + '%', content + '%')
     elsif method == 'backward'
-      Post.joins(:content, :main_text, :post_code).where('title LIKE(?) OR main_code LIKE(?) OR contents.table_of_content LIKE(?) OR main_texts.body LIKE(?) OR post_codes.code LIKE(?)', '%'+content, '%'+content, '%'+content, '%'+content, '%'+content)
+      Post.where('title LIKE ? OR main_code LIKE ?', '%' + content, '%' + content)
     else
-      Post.joins(:content, :main_text, :post_code).where('title LIKE(?) OR main_code LIKE(?) OR contents.table_of_content LIKE(?) OR main_texts.body LIKE(?) OR post_codes.code LIKE(?)', '%'+content+'%', '%'+content+'%', '%'+content+'%', '%'+content+'%', '%'+content+'%')
+      Post.where('title LIKE ? OR main_code LIKE ?', '%' + content + '%', '%' + content + '%')
     end
-
-    # if method == 'perfect'
-    #   Post.where(main_code: content)
-    # elsif method == 'forward'
-    #   Post.where('main_code LIKE ?', content+'%')
-    # elsif method == 'backward'
-    #   Post.where('main_code LIKE ?', '%'+content)
-    # else
-    #   Post.where('main_code LIKE ?', '%'+content+'%')
-    # end
   end
+
+  # キーワード検索アップグレード用現在模索中につきコメントアウト
+  # def self.search_for(content, method)
+  #   if method == 'perfect'
+  #     Post.joins(:content, :main_text, :post_code).where('title LIKE(?) OR main_code LIKE(?) OR contents.table_of_content LIKE(?) OR main_texts.body LIKE(?) OR post_codes.code LIKE(?)', content, content, content, content, content)
+  #   elsif method == 'forward'
+  #     Post.joins(:content, :main_text, :post_code).where('title LIKE(?) OR main_code LIKE(?) OR contents.table_of_content LIKE(?) OR main_texts.body LIKE(?) OR post_codes.code LIKE(?)', content+'%', content+'%', content+'%', content+'%', content+'%')
+  #   elsif method == 'backward'
+  #     Post.joins(:content, :main_text, :post_code).where('title LIKE(?) OR main_code LIKE(?) OR contents.table_of_content LIKE(?) OR main_texts.body LIKE(?) OR post_codes.code LIKE(?)', '%'+content, '%'+content, '%'+content, '%'+content, '%'+content)
+  #   else
+  #     Post.joins(:content, :main_text, :post_code).where('title LIKE(?) OR main_code LIKE(?) OR contents.table_of_content LIKE(?) OR main_texts.body LIKE(?) OR post_codes.code LIKE(?)', '%'+content+'%', '%'+content+'%', '%'+content+'%', '%'+content+'%', '%'+content+'%')
+  #   end
+  # end
 end

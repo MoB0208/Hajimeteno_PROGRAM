@@ -1,6 +1,6 @@
 class Users::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:favorites, :show]
+  before_action :set_user, only: [:favorites, :show, :edit, :update]
 
   def favorites
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
@@ -8,17 +8,14 @@ class Users::UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
     @user_posts = current_user.posts.all
     @favorites = Favorite.where(user_id: @user.id).all
   end
 
   def edit
-    @user = current_user
   end
 
   def update
-    @user = current_user
     if @user.update(user_params)
       redirect_to home_path, notice: "編集内容を保存しました。"
     else
