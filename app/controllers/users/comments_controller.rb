@@ -1,5 +1,6 @@
 class Users::CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user, only: [:create, :edit, :update, :destroy]
 
   def create
     post = Post.find(params[:post_id])
@@ -27,5 +28,9 @@ class Users::CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:comment_body)
+  end
+
+  def set_user
+    @user = current_user
   end
 end
