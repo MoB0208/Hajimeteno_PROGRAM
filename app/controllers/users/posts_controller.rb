@@ -86,19 +86,20 @@ class Users::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @genre = @post.genres
     @comment = Comment.new
+    @same_posts = @post.same
 
     # 関連記事
-    @follower_posts = @post.posts.joins(:genres).where(genres: {id: @post.genres.ids})
-    @follow_posts = @post.relation_posts.joins(:genres).where(genres: {id: @post.genres.ids})
-    if @follower_posts.blank? && @follow_posts.blank?
-      @same_posts = []
-    elsif @follower_posts.blank?
-      @same_posts = @follow_posts
-    elsif @follow_posts.blank?
-      @same_posts = @follower_posts
-    else
-      @same_posts = Post.where(id: @follower_posts.ids+@follow_posts.ids)
-    end
+    # @follower_posts = @post.posts.joins(:genres).where(genres: {id: @post.genres.ids})
+    # @follow_posts = @post.relation_posts.joins(:genres).where(genres: {id: @post.genres.ids})
+    # if @follower_posts.blank? && @follow_posts.blank?
+    #   @same_posts = []
+    # elsif @follower_posts.blank?
+    #   @same_posts = @follow_posts
+    # elsif @follow_posts.blank?
+    #   @same_posts = @follower_posts
+    # else
+    #   @same_posts = Post.where(id: @follower_posts.ids+@follow_posts.ids)
+    # end
 
     # 別言語の関連記事
     @other_follower_posts = @post.posts.where(main_code: @post.main_code)

@@ -31,6 +31,23 @@ class Post < ApplicationRecord
     post_relationships.find_by(relation_post_id: post_id).destroy
   end
 
+  # 関連記事表示
+  def same
+    @post = Post.find(params[:id])
+    @genre = @post.genres
+    @follower_posts = @post.posts.joins(:genres).where(genres: {id: @post.genres.ids})
+    @follow_posts = @post.relation_posts.joins(:genres).where(genres: {id: @post.genres.ids})
+    if @follower_posts.blank? && @follow_posts.blank?
+      @same_posts = []
+    elsif @follower_posts.blank?
+      @same_posts = @follow_posts
+    elsif @follow_posts.blank?
+      @same_posts = @follower_posts
+    else
+      @same_posts = Post.where(id: @follower_posts.ids+@follow_posts.ids)
+    end
+  end
+
   def self.search_for(content, method)
     if method == 'perfect'
       Post.where(title: content)
