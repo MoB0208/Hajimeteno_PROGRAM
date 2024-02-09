@@ -3,46 +3,45 @@
   <div class="row flex-column m-5 p-5">
     <div class="col-8 rounded bg-white mx-auto p-5">
       <h3>記事編集</h3>
-      <div class="mt-5 mx-5">
-        <%= form_with model: @post, url: post_path(@post), method: :patch do |f| %>
+      <p class="text-danger">※は必須項目です。</p>
+      <%= form_with model: @post, url: post_path(@post), method: :patch do |f| %>
+        <div class="form-group">
+          <%= f.label :title, "タイトル" %><p class="text-danger">※</p>
+          <%= f.text_field :title, class: 'form-control title', placeholder:"タイトルを記入してください。" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :main_code, "メインコード" %><p class="text-danger">※</p>
+          <%= f.text_area :main_code, class: 'form-control main_code', placeholder:"今回の記事のメインとなるコードを記入してください。" %>
+        </div>
+        <div class="form-group">
+          <!--言語一覧選択-->
+          <%= render '/users/genres/form', f: f %>
           <div class="form-group">
-            <%= f.label :title, "タイトル" %>
-            <%= f.text_field :title, class: 'form-control title', placeholder:"タイトルを記入してください。" %>
+            <%= f.label :version, "実行環境" %><p class="text-danger">※</p>
+            <%= f.text_area :version, class: 'form-control version', placeholder:"実行環境の各バージョンを記入してください。" %>
           </div>
-          <div class="form-group">
-            <%= f.label :main_code, "メインコード" %>
-            <%= f.text_area :main_code, class: 'form-control main_code', placeholder:"今回の記事のメインとなるコードを記入してください。" %>
-          </div>
-          <div class="form-group">
-            <!--言語一覧選択-->
-            <%= render '/users/genres/form', f: f %>
-            <div class="form-group">
-              <%= f.label :version, "実行環境" %>
-              <%= f.text_area :version, class: 'form-control version', placeholder:"実行環境の各バージョンを記入してください。" %>
-            </div>
-          </div>
-          <div>
-            <!--目次記入-->
-            <%= render '/users/contents/form', f: f %>
-          </div>
-          <div>
-            <!--本文記入-->
-            <%= render '/users/main_texts/form', f: f %>
-          </div>
-          <div>
-            <!--コード記入-->
-            <%= render '/users/post_codes/form', f: f %>
-          </div>
-          <div>
-            <!--投稿時関連記事選択-->
-            <%= render '/users/posts/form_relation', f: f %>
-          </div>
-          <div class="form-group text-center">
-            <%= f.submit "変更する", class: 'btn btn-success' %>
-          </div>
-        <% end %>
-        <%= link_to "戻る", post_path(@post), class: "btn btn-success" %>
-      </div>
+        </div>
+        <div>
+          <!--目次記入-->
+          <%= render '/users/contents/form', f: f %>
+        </div>
+        <div>
+          <!--本文記入-->
+          <%= render '/users/main_texts/form', f: f %>
+        </div>
+        <div>
+          <!--コード記入-->
+          <%= render '/users/post_codes/form', f: f %>
+        </div>
+        <div>
+          <!--投稿時関連記事選択-->
+          <%= render '/users/posts/form_relation', f: f %>
+        </div>
+        <div class="form-group text-center">
+          <%= f.submit "変更する", class: 'btn btn-success' %>
+        </div>
+      <% end %>
+      <%= link_to "戻る", post_path(@post), class: "btn btn-success" %>
     </div>
   </div>
 </div>
