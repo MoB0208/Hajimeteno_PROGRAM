@@ -11,7 +11,7 @@ class Admins::GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     @genre.save
-    redirect_to admins_root_path
+    redirect_to admins_root_path, notice: "ジャンルを登録しました。"
   end
 
   def edit
@@ -19,13 +19,13 @@ class Admins::GenresController < ApplicationController
 
   def update
     @genre.update(genre_params)
-    redirect_to admins_root_path
+    redirect_to admins_root_path, notice: "ジャンル名を変更しました。"
   end
 
   private
 
   def genre_params
-     params.require(:genre).permit(:genre_name)
+    params.require(:genre).permit(:genre_name)
   end
 
   def set_genre

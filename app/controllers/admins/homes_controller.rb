@@ -4,6 +4,7 @@ class Admins::HomesController < ApplicationController
   def top
     @users = User.all
     @genres = Genre.all
+    @genre = Genre.new
     # コメント新着20件
     @comments = Comment.order('id DESC').limit(20)
     # 記事新着20件

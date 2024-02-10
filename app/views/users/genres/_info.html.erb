@@ -1,11 +1,15 @@
 <!--言語一覧検索用-->
 <div>
   <h2>言語一覧</h2>
-  <% genres.each do |genre| %>
-    <table>
-      <tr>
-        <%= link_to genre.genre_name, genre_path(genre, genre_id: genre.id) %>
-      </tr>
-    </table>
+  <% if genres.any? %>
+    <% genres.each do |genre| %>
+      <table>
+        <tr>
+          <%= link_to genre.genre_name, genre_path(genre, genre_id: genre.id) %>
+        </tr>
+      </table>
+    <% end %>
+  <% else %>
+    <p>現在、登録されたジャンルはありません。</p>
   <% end %>
 </div>
