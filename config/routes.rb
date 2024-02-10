@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update]
 
     # 言語一覧
-    resources :genres, only: [:show]
+    resources :genres, only: [:show, :create, :edit, :update]
 
     # 投稿関連
     resources :posts, only: [:index, :show, :destroy] do

@@ -8,4 +8,13 @@
       </tr>
     </table>
   <% end %>
+  <div class="mt-4">
+    <h5>ジャンル追加</h5>
+    <%= form_with model: @genre, url: admins_genres_path(@genre), method: :post do |f| %>
+      <td><%= f.text_field :name,  size: 13 %></td>
+      <div class="text-center mt-3">
+        <%= f.submit'新規登録',class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
 </div>
