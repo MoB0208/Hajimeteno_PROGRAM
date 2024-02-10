@@ -3,6 +3,7 @@
   <div class="row flex-column m-5 p-5">
     <div class="col-8 rounded bg-white mx-auto p-5">
       <h2><%= @genre.genre_name %></h2>
+      <%= flash[:notice] %>
       <!--ジャンル名編集-->
       <div class="text-right">
         <%= link_to "ジャンル名を編集する", edit_admins_genre_path(@genre.id), class: "btn btn-sm btn-success" %>

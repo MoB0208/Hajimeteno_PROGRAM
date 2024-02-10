@@ -19,7 +19,7 @@ class Admins::GenresController < ApplicationController
 
   def update
     @genre.update(genre_params)
-    redirect_to admins_root_path, notice: "ジャンル名を変更しました。"
+    redirect_to admins_genre_path(@genre), notice: "ジャンル名を変更しました。"
   end
 
   private
