@@ -13,6 +13,7 @@
           <!--一覧テンプレート-->
           <%= render '/users/posts/info', post: post %>
         <% end %>
+        <%= paginate @favorite_posts %>
       <% else %>
         <p>現在、お気に入り登録された記事はありません。</p>
       <% end %>
