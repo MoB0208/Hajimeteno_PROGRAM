@@ -1,42 +1,11 @@
 ja:
-  enums:
-    genre:
-      genre_name:
-        javascript: "JavaScript"
-        java: "Java"
-        php: "PHP"
-        c: "C"
-        c_plus: "C++"
-        c_sharp: "C#"
-        typescript: "TypeScript"
-        shell: "Shell"
-        ruby: "Ruby"
-        python: "Python"
-        go: "Go"
-        kotlin: "Kotlin"
-        html: "HTML"
-        css: "CSS"
-        sql: "SQL"
-        swift: "Swift"
-        visual_basic: "Visual Basic"
-        ruby_on_rails: "Ruby on Rails"
-        sinatra: "Sinatra"
-        padrino: "Padrino"
-        angularjs: "AngularJS"
-        vue_js: "Vue.js"
-        ember_js: "Ember.js"
-        spring_framework: "Spring Framework"
-        javaserver_faces: "JavaServer Faces"
-        play_framework: "Play Framework"
-        cakephp: "CakePHP"
-        laravel: "Laravel"
-        fuelphp: "FuelPHP"
-        django: "Django"
-        flask: "Flask"
-        bootstrap: "Bootstrap"
-        foundation: "Foundation"
-        uikit: "UIkit"
-        react: "React"
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
 
   activerecord:
     errors:
