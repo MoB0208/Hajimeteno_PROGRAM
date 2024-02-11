@@ -13,6 +13,9 @@
           <!--一覧テンプレート-->
           <%= render '/admins/posts/info', post: post %>
         <% end %>
+        <div class="text-center">
+          <%= paginate @posts %>
+        </div>
       <% else %>
         <p>該当する記事はありません。</p>
       <% end %>

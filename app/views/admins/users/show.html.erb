@@ -18,6 +18,9 @@
             </div>
           </div>
         <% end %>
+        <div class="text-center">
+          <%= paginate @user_comments %>
+        </div>
       <% else %>
         <div>
           <p>投稿した記事はありません。</p>
@@ -44,6 +47,9 @@
             </div>
           </div>
         <% end %>
+        <div class="text-center">
+          <%= paginate @user_posts %>
+        </div>
       <% else %>
         <div>
           <p>投稿した記事はありません。</p>

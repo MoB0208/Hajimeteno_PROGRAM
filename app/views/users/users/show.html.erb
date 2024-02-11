@@ -15,6 +15,9 @@
             <!--一覧テンプレート-->
             <%= render '/users/posts/info', post: post %>
           <% end %>
+          <div class="text-center">
+            <%= paginate @favorites %>
+          </div>
         <% else %>
           <div>
             <p>お気に入りに登録した記事はありません。</p>
@@ -45,6 +48,9 @@
               </div>
             </div>
           <% end %>
+          <div class="text-center">
+            <%= paginate @user_posts %>
+          </div>
         <% else %>
           <div>
             <p>あなたが投稿した記事はありません。</p>

@@ -6,5 +6,6 @@ class Users::HomesController < ApplicationController
     @favorite_posts = Kaminari.paginate_array(@favorite_posts).page(params[:page]).per(5)
     # 新着20件
     @posts = Post.order('id DESC').limit(20)
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(5)
   end
 end

@@ -8,6 +8,9 @@
           <!--一覧テンプレート-->
           <%= render '/users/posts/info', post: post %>
         <% end %>
+        <div class="text-center">
+          <%= paginate @posts %>
+        </div>
       <% else %>
         <p>該当する記事はありません。</p>
       <% end %>

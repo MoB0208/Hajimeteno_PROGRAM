@@ -4,8 +4,12 @@ class Admins::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # コメント
     @user_comments = @user.comments.all
+    @user_comments = Kaminari.paginate_array(@user_comments).page(params[:page]).per(5)
+    # 記事
     @user_posts = @user.posts.all
+    @user_posts = Kaminari.paginate_array(@user_posts).page(params[:page]).per(5)
   end
 
   def edit

@@ -8,8 +8,12 @@ class Users::UsersController < ApplicationController
   end
 
   def show
+    # 投稿した記事
     @user_posts = current_user.posts.all
+    @user_posts = Kaminari.paginate_array(@user_posts).page(params[:page]).per(5)
+    # お気に入りした記事
     @favorites = Favorite.where(user_id: @user.id).all
+    @favorites = Kaminari.paginate_array(@favorites).page(params[:page]).per(5)
   end
 
   def edit

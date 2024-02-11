@@ -59,6 +59,9 @@
               <%= link_to "削除する", admins_post_comment_path(comment.post, comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}  %>
             </div>
           <% end %>
+          <div class="text-center">
+            <%= paginate @comments %>
+          </div>
         <% else %>
         <p>上記以外のコメントはありません。</p>
         <% end %>

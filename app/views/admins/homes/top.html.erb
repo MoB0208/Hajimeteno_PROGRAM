@@ -13,6 +13,9 @@
           <!--一覧テンプレート-->
           <%= render '/admins/posts/info', post: post %>
         <% end %>
+        <div class="text-center">
+          <%= paginate @posts %>
+        </div>
       <% else %>
         <p>最近投稿された記事はありません。</p>
       <% end %>
@@ -32,6 +35,9 @@
               <%= link_to "削除", admins_post_comment_path(comment.post, comment), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
           </div>
         <% end %>
+        <div class="text-center">
+          <%= paginate @comments %>
+        </div>
       <% else %>
         <p>現在、コメントはありません。</p>
       <% end %>
@@ -45,6 +51,9 @@
             <%= link_to user.account_name, admins_user_path(user) %>
           </div>
         <% end %>
+        <div class="text-center">
+          <%= paginate @users %>
+        </div>
       <% else %>
         <p>現在、登録された会員はいません。</p>
       <% end %>
