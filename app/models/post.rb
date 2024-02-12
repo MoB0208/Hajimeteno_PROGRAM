@@ -43,10 +43,10 @@ class Post < ApplicationRecord
       Post.where('title LIKE ? OR main_code LIKE ?', '%' + content + '%', '%' + content + '%')
     end
   end
-  
+
   after_create do
     user.comments.each do |comment|
-      notifications.create(user_id: comment.id)
+      Notification.create(user_id: comment.id, notifiable_type: “Comment”, notifiable_id: id)
     end
   end
 

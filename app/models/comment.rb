@@ -5,4 +5,7 @@ class Comment < ApplicationRecord
 
   validates :comment_body, presence: true
 
+  after_create do
+    create_notification(user_id: post.user_id)
+  end
 end
