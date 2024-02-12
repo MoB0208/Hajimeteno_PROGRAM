@@ -4,4 +4,5 @@ class Comment < ApplicationRecord
   has_one :notification, as: :notifiable, dependent: :destroy
 
   validates :comment_body, presence: true
+
 end

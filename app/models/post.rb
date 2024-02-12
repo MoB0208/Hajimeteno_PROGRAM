@@ -2,11 +2,11 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :notifications, as: :notifiable, dependent: :destroy
   has_many :genre_posts, dependent: :destroy
   has_many :genres, through: :genre_posts
   has_many :post_codes, dependent: :destroy
   has_many :contents, dependent: :destroy
-  has_many :notifications, as: :notifiable, dependent: :destroy
   has_many :main_texts, dependent: :destroy
 
   has_many :reverse_of_post_relationships, class_name: "PostRelationship", foreign_key: "relation_post_id", dependent: :destroy
@@ -41,6 +41,12 @@ class Post < ApplicationRecord
       Post.where('title LIKE ? OR main_code LIKE ?', '%' + content, '%' + content)
     else
       Post.where('title LIKE ? OR main_code LIKE ?', '%' + content + '%', '%' + content + '%')
+    end
+  end
+  
+  after_create do
+    user.comments.each do |comment|
+      notifications.create(user_id: comment.id)
     end
   end
 
