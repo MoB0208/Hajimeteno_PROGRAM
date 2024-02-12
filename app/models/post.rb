@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   has_many :genres, through: :genre_posts
   has_many :post_codes, dependent: :destroy
   has_many :contents, dependent: :destroy
+  has_many :notifications, as: :notifiable, dependent: :destroy
   has_many :main_texts, dependent: :destroy
 
   has_many :reverse_of_post_relationships, class_name: "PostRelationship", foreign_key: "relation_post_id", dependent: :destroy
