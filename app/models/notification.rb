@@ -12,7 +12,7 @@ class Notification < ApplicationRecord
 
   def notifiable_path
     if notification.notifiable_type === "Comment"
-      post_path(notifiable.id)
+      post_path(notifiable.comment.post.id)
     end
   end
 end

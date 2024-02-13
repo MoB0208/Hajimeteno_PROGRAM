@@ -46,7 +46,7 @@ class Post < ApplicationRecord
 
   after_create do
     user.comments.each do |comment|
-      Notification.create(user_id: comment.id, notifiable_type: “Comment”, notifiable_id: id)
+      Notification.create(user_id: comment.user.id, notifiable_type: “Comment”, notifiable_id: id)
     end
   end
 
