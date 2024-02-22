@@ -11,7 +11,7 @@ class Notification < ApplicationRecord
   end
 
   def notifiable_path
-    if notification.notifiable_type === "Comment"
+    if notifiable_type === "Comment"
       post_path(notifiable.post.id)
     end
   end
