@@ -6,13 +6,14 @@ class Notification < ApplicationRecord
 
   def message
     if notifiable_type === "Comment"
-      "投稿した#{notifiable.post.title}へ#{notifiable.user.account_name}さんがコメントしました。"
+      "#{notifiable.user.account_name}さんが#{notifiable.post.title}へコメントしました。"
     end
   end
 
   def notifiable_path
     if notifiable_type === "Comment"
-      post_path(notifiable.post.id)
+      post_notifications_path(notifiable.post.id)
+      # post_path(notifiable.post.id)
     end
   end
 end

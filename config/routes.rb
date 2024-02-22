@@ -53,6 +53,8 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       # コメント関連
       resources :comments, only: [:create, :edit, :update, :destroy]
+      # 通知
+      resource :notifications, only: [:update]
     end
 
     # 検索

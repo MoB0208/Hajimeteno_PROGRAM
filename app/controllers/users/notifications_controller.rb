@@ -2,8 +2,9 @@ class Users::NotificationsController < ApplicationController
   before_action :authenticate_user!
 
   def update
-    notification = current_user.notifications.find(params[:id])
+    # byebug
+    notification = current_user.notifications.find(params[:post_id])
     notification.update(read: true)
-    redirect_to notification.notifiable_path
+    redirect_to post_path(notification.post.id)
   end
 end
